@@ -1,0 +1,38 @@
+{
+	"title" : "Wheres my Limbs?",
+	"description": "Find your missing limbs!",
+	"xsize": 1,
+	"ysize": 1,
+	"turns": [
+		5,
+		4,
+		3
+	],
+	"objectives": [
+		"Right Arm",
+		"Left Arm",
+		"Right Leg",
+		"Left Leg"
+	],
+
+	"rooms" : [
+			{
+			"xcoordinate": 1,
+			"ycoordinate": 1,
+			"room_title": "Castle courtyard",
+			"room_description": "You are in the castle courtyard",
+			"room_items": [
+				"Left Arm",
+				"Right Arm",
+				"Left Leg",
+				"Right Leg"
+			],
+			"available_directions" : [ 
+				"north",
+				"east",
+				"south",
+				"west"
+			] 
+		} 
+	] 
+}

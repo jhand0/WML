@@ -7,17 +7,24 @@ import android.app.Application;
  */
 public class LimbsApp extends Application {
     private static LimbsApp instance = null;
+    private MapRepository mapRepo;
 
     public LimbsApp() {
         if (instance == null) {
             instance = this;
         } else {
-            throw new RuntimeException("Too many Limbs Apps!!");
+            throw new RuntimeException("Ya got too many Limbs Apps!!");
         }
+
+        this.mapRepo = new MapRepository();
     }
 
-    public LimbsApp getInstance() {
+    public static LimbsApp getInstance() {
         return instance;
+    }
+
+    public MapRepository getMapRepository() {
+        return mapRepo;
     }
 
 
