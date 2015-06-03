@@ -18,6 +18,9 @@ public class ActivityMain extends Activity {
         Button btnPlay = (Button) findViewById(R.id.btnPlay);
         Button btnSettings = (Button) findViewById(R.id.btnSettings);
 
+        // Set btnPlay disabled until map is downloaded
+        btnPlay.setEnabled(false);
+
         btnPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
