@@ -5,4 +5,8 @@
     <string name="title_activity_activity_death">ActivityDeath</string>
     <string name="title_activity_activity_victory">ActivityVictory</string>
     <string name="title_activity_activity_game">ActivityGame</string>
+    <string name="title_activity_activity_intro">ActivityIntro</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
 </resources>

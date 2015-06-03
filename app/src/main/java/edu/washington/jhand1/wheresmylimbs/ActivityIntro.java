@@ -3,15 +3,11 @@ package edu.washington.jhand1.wheresmylimbs;
 import android.app.Activity;
 import android.os.Bundle;
 
-public class ActivityGame extends Activity {
+public class ActivityIntro extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game);
-
-        /* Gray out button
-        btnSubmit.setEnabled(true);
-         */
+        setContentView(R.layout.activity_intro);
     }
 }

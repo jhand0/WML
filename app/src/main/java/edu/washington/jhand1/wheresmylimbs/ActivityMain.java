@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.preference.PreferenceManager;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 public class ActivityMain extends Activity {
 
@@ -15,14 +17,23 @@ public class ActivityMain extends Activity {
 
         LimbsApp limbsApp = (LimbsApp) getApplication();
 
-        /* Starting settings activity
-        Intent settings =  new Intent(ActivityMain.this, ActivitySettings.class);
-        startActivity(settings);
-         */
+        Button btnPlay = (Button) findViewById(R.id.btnPlay);
+        Button btnSettings = (Button) findViewById(R.id.btnSettings);
 
-        /* Gray out button
-        btnSubmit.setEnabled(true);
-         */
+        btnPlay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent game = new Intent(ActivityMain.this, ActivityIntro.class);
+                startActivity(game);
+            }
+        });
 
+        btnSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent game = new Intent(ActivityMain.this, ActivitySettings.class);
+                startActivity(game);
+            }
+        });
     }
 }
