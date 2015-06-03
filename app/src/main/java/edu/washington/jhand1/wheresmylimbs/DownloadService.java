@@ -11,12 +11,12 @@ import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
-public class DownloadMap extends IntentService {
+public class DownloadService extends IntentService {
 
-    public static final String tag = "LimbsApp/DownloadMap";
+    public static final String tag = "LimbsApp/DownloadService";
 
-    public DownloadMap() {
-        super("DownloadMap");
+    public DownloadService() {
+        super("DownloadService");
     }
 
     @Override

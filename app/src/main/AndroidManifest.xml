@@ -39,7 +39,7 @@
         </activity>
 
         <service
-            android:name=".DownloadMap"
+            android:name=".DownloadService"
             android:enabled="true"
             android:exported="true" >
         </service>
