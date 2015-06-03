@@ -3,12 +3,12 @@
 
     <string name="pref_header">Game Settings</string>
 
-    <string name="pref_title_map">Map</string>
-    <string-array name="pref_map_titles">
+    <string name="pref_title_adventure">Adventure</string>
+    <string-array name="pref_adventure_titles">
         <item>Where\'s My Limbs</item>
     </string-array>
-    <string-array name="pref_map_values">
-        <item>http://ourserver.com/wml.json</item>
+    <string-array name="pref_adventure_values">
+        <item>http://students.washington.edu/jhand1/adventure.json</item>
     </string-array>
 
     <string name="pref_title_difficulty">Difficulty</string>

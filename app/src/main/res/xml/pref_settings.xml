@@ -1,11 +1,11 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <ListPreference
-        android:key="map"
-        android:title="@string/pref_title_map"
-        android:entries="@array/pref_map_titles"
-        android:entryValues="@array/pref_map_values"
-        android:defaultValue="http://ourserver.com/wml.json"
+        android:key="adventure"
+        android:title="@string/pref_title_adventure"
+        android:entries="@array/pref_adventure_titles"
+        android:entryValues="@array/pref_adventure_values"
+        android:defaultValue="@array/pref_adventure_values[0]"
         android:negativeButtonText="@null"
         android:positiveButtonText="@null" />
 
@@ -14,7 +14,7 @@
         android:title="@string/pref_title_difficulty"
         android:entries="@array/pref_difficulty_titles"
         android:entryValues="@array/pref_difficulty_values"
-        android:defaultValue="0"
+        android:defaultValue="@array/pref_difficulty_values[0]"
         android:negativeButtonText="@null"
         android:positiveButtonText="@null" />
 
