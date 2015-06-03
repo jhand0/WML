@@ -1,7 +1,5 @@
 package edu.washington.jhand1.wheresmylimbs;
 
-import android.util.Log;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,11 +19,11 @@ public class MapRepository {
     private int xMax;
     private int yMax;
     private Room[][] board;
+    private String jsonString;
 
     public MapRepository() {
         objectiveItems = new ArrayList<>();
         rooms = new ArrayList<>();
-        parseJSONFromFile();
     }
 
     public List<String> getObjectiveItems() {
@@ -36,14 +34,15 @@ public class MapRepository {
         return rooms;
     }
 
-    public String readJSONFile(InputStream inputStream) throws IOException {
+    public void readJSONFile(InputStream inputStream) throws IOException {
 
         int size = inputStream.available();
         byte[] buffer = new byte[size];
         inputStream.read(buffer);
         inputStream.close();
 
-        return new String(buffer, "UTF-8");
+        jsonString = new String(buffer, "UTF-8");
+        parseJSONFromFile();
     }
 
     public int getXMax() {
@@ -62,8 +61,7 @@ public class MapRepository {
     //reads JSON from a file and parses it into usable objects
     private void parseJSONFromFile() {
         try {
-            InputStream inputStream = LimbsApp.getInstance().getAssets().open("adventure.json");
-            String json = readJSONFile(inputStream);
+            String json = jsonString;
 
             JSONObject adventure = new JSONObject(json);
 
@@ -84,8 +82,6 @@ public class MapRepository {
                 parseRoom(room);
             }
             parseObjectives(adventure); //adds room objectives to list
-        }catch (IOException e) {
-            e.printStackTrace();
         } catch (JSONException e) {
             e.printStackTrace();
         }

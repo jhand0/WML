@@ -17,8 +17,8 @@
 
 	"rooms" : [
 			{
-			"xcoordinate": 1,
-			"ycoordinate": 1,
+			"xcoordinate": 0,
+			"ycoordinate": 0,
 			"room_title": "Castle courtyard",
 			"room_description": "You are in the castle courtyard",
 			"room_items": [

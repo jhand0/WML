@@ -5,6 +5,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import org.apache.http.message.LineParser;
+
+import java.io.IOException;
+import java.io.InputStream;
+
 
 public class MainActivity extends ActionBarActivity {
 
@@ -12,6 +17,13 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        MapRepository repo = LimbsApp.getInstance().getMapRepository();
+        try {
+            InputStream json = getAssets().open("adventure.json");
+            repo.readJSONFile(json);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

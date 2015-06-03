@@ -1,6 +1,7 @@
 package edu.washington.jhand1.wheresmylimbs;
 
 import android.app.Application;
+import android.util.Log;
 
 /**
  * Created by Jordan on 5/25/2015.
@@ -12,11 +13,12 @@ public class LimbsApp extends Application {
     public LimbsApp() {
         if (instance == null) {
             instance = this;
+            mapRepo = new MapRepository();
         } else {
             throw new RuntimeException("Ya got too many Limbs Apps!!");
         }
 
-        this.mapRepo = new MapRepository();
+
     }
 
     public static LimbsApp getInstance() {
