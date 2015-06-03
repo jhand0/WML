@@ -1,7 +1,5 @@
 package edu.washington.jhand1.wheresmylimbs;
 
-import android.util.Log;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,11 +19,11 @@ public class MapRepository {
     private int xMax;
     private int yMax;
     private Room[][] board;
+    private String jsonString;
 
     public MapRepository() {
         objectiveItems = new ArrayList<>();
         rooms = new ArrayList<>();
-        parseJSONFromFile();
     }
 
     public List<String> getObjectiveItems() {
@@ -36,14 +34,15 @@ public class MapRepository {
         return rooms;
     }
 
-    public String readJSONFile(InputStream inputStream) throws IOException {
+    public void readJSONFile(InputStream inputStream) throws IOException {
 
         int size = inputStream.available();
         byte[] buffer = new byte[size];
         inputStream.read(buffer);
         inputStream.close();
 
-        return new String(buffer, "UTF-8");
+        jsonString = new String(buffer, "UTF-8");
+        parseJSONFromFile();
     }
 
     public int getXMax() {
@@ -62,8 +61,7 @@ public class MapRepository {
     //reads JSON from a file and parses it into usable objects
     private void parseJSONFromFile() {
         try {
-            InputStream inputStream = LimbsApp.getInstance().getAssets().open("adventure.json");
-            String json = readJSONFile(inputStream);
+            String json = jsonString;
 
             JSONObject adventure = new JSONObject(json);
 
@@ -84,8 +82,6 @@ public class MapRepository {
                 parseRoom(room);
             }
             parseObjectives(adventure); //adds room objectives to list
-        }catch (IOException e) {
-            e.printStackTrace();
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -103,7 +99,8 @@ public class MapRepository {
         }
         JSONArray jsonDirections = room.getJSONArray("available_directions");
         for (int i = 0; i < jsonDirections.length(); i++) {
-            adventureRoom.addDirection(jsonDirections.getString(i));
+            Direction direction = checkDirection(jsonDirections.getString(i));
+            adventureRoom.addDirection(direction);
         }
         rooms.add(adventureRoom);
         board[x][y] = adventureRoom; //puts room on the board
@@ -114,5 +111,26 @@ public class MapRepository {
         for (int i = 0; i < jsonObjectives.length(); i++) {
             objectiveItems.add(jsonObjectives.getString(i));
         }
+    }
+
+    private Direction checkDirection(String dirString) {
+        Direction direction = Direction.NORTH;
+        switch (dirString) {
+            case "north":
+                direction = Direction.NORTH;
+                break;
+            case "south":
+                direction = Direction.SOUTH;
+                break;
+            case "east":
+                direction = Direction.EAST;
+                break;
+            case "west":
+                direction = Direction.WEST;
+                break;
+            default: break;
+        }
+
+        return direction;
     }
 }
