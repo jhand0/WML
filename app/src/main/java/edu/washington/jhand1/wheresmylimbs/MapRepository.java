@@ -37,6 +37,10 @@ public class MapRepository {
         return rooms;
     }
 
+    public Room[][] getBoard() {
+        return board;
+    }
+
     public void readJSONFile(InputStream inputStream) throws IOException {
         int size = inputStream.available();
         byte[] buffer = new byte[size];

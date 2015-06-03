@@ -16,20 +16,26 @@ import java.util.List;
  */
 public class LimbsApp extends Application {
 
-    public static final String FILENAME = "map.json";
+    public static final String FILENAME = "adventure.json";
 
     private static LimbsApp instance = null;
     private MapRepository mapRepo;
     private List<String> inventory;
     private int currMove;
     private int maxMoves;
+    private int currX;
+    private int currY;
     private Room currentRoom;
+    Room[][] board;
 
     public LimbsApp() {
         if (instance == null) {
             instance = this;
             mapRepo = new MapRepository();
             inventory = new ArrayList<>();
+            board = mapRepo.getBoard();
+            currX = 0;
+            currY = 0;
         } else {
             throw new RuntimeException("Ya got too many Limbs Apps!!");
         }
@@ -44,7 +50,23 @@ public class LimbsApp extends Application {
     }
 
     public void move(Direction direction) {
-
+        if (currentRoom.getAvailableDirections().contains(direction)) {
+            switch (direction) {
+                case NORTH:
+                    currY++;
+                    break;
+                case SOUTH:
+                    currY--;
+                    break;
+                case EAST:
+                    currX--;
+                    break;
+                case WEST:
+                    currY++;
+                    break;
+            }
+        }
+        currentRoom = board[currX][currY];
     }
 
     public int movesLeft() {
