@@ -55,11 +55,9 @@ public class LimbsApp extends Application {
         return currentRoom.getName();
     }
 
-    /* Rooms dont currently have a description
     public String getRoomDescription() {
-
+        return currentRoom.getDescription();
     }
-    */
 
 
     /*what does this mean?
@@ -75,6 +73,7 @@ public class LimbsApp extends Application {
     public List<String> getItemsCollected() {
         return inventory;
     }
+
 
 
     // Readers and writers
@@ -100,21 +99,6 @@ public class LimbsApp extends Application {
             byte[] buffer = new byte[size];
             fis.read(buffer);
             fis.close();
-            json = new String(buffer, "UTF-8");
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-        return json;
-    }
-
-    public String loadJSON(InputStream is) {
-        String json;
-        try {
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
             json = new String(buffer, "UTF-8");
         } catch (IOException e) {
             e.printStackTrace();

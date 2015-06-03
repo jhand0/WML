@@ -25,6 +25,7 @@ import android.widget.Toast;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 public class ActivityMain extends Activity {
 
@@ -36,6 +37,14 @@ public class ActivityMain extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //gets json from assets and sends it to MapRepo
+        try {
+            InputStream json = getAssets().open("adventure.json");
+            LimbsApp.getInstance().getMapRepository().readJSONFile(json);
+            json.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         PreferenceManager.setDefaultValues(this, R.xml.pref_settings, false);
 
         Button btnPlay = (Button) findViewById(R.id.btnPlay);

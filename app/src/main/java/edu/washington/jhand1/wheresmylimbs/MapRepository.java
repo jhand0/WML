@@ -20,6 +20,9 @@ public class MapRepository {
     private int yMax;
     private Room[][] board;
     private String jsonString;
+    private String mapIntro;
+    private String deathMessage;
+    private String victoryMessage;
 
     public MapRepository() {
         objectiveItems = new ArrayList<>();
@@ -35,7 +38,6 @@ public class MapRepository {
     }
 
     public void readJSONFile(InputStream inputStream) throws IOException {
-
         int size = inputStream.available();
         byte[] buffer = new byte[size];
         inputStream.read(buffer);
@@ -57,6 +59,18 @@ public class MapRepository {
         return turnCounts;
     }
 
+    public String getIntro() {
+        return mapIntro;
+    }
+
+    public String getDeathMessage() {
+        return deathMessage;
+    }
+
+    public String getVictoryMessage() {
+        return victoryMessage;
+    }
+
 
     //reads JSON from a file and parses it into usable objects
     private void parseJSONFromFile() {
@@ -71,6 +85,9 @@ public class MapRepository {
                 this.turnCounts[i] = turns.getInt(i);
             }
 
+            this.mapIntro = adventure.getString("title");
+            this.victoryMessage = adventure.getString("victory_message");
+            this.deathMessage = adventure.getString("death_message");
             this.xMax = adventure.getInt("xsize");
             this.yMax = adventure.getInt("ysize");
             board = new Room[xMax][yMax];
@@ -91,8 +108,8 @@ public class MapRepository {
         int x = room.getInt("xcoordinate");
         int y = room.getInt("ycoordinate");
         String title = room.getString("room_title");
-        //String description = room.getString("room_description");
-        Room adventureRoom = new Room(title, x, y);
+        String description = room.getString("room_description");
+        Room adventureRoom = new Room(title, description, x, y);
         JSONArray jsonItems = room.getJSONArray("room_items");
         for (int i = 0; i < jsonItems.length(); i++) {
             adventureRoom.addItem(jsonItems.getString(i));
@@ -114,7 +131,7 @@ public class MapRepository {
     }
 
     private Direction checkDirection(String dirString) {
-        Direction direction = Direction.NORTH;
+        Direction direction = null;
         switch (dirString) {
             case "north":
                 direction = Direction.NORTH;
