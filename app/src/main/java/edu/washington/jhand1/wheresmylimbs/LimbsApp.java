@@ -3,6 +3,11 @@ package edu.washington.jhand1.wheresmylimbs;
 import android.app.Application;
 import android.util.Log;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +15,9 @@ import java.util.List;
  * Created by Jordan on 5/25/2015.
  */
 public class LimbsApp extends Application {
+
+    public static final String FILENAME = "map.json";
+
     private static LimbsApp instance = null;
     private MapRepository mapRepo;
     private List<String> inventory;
@@ -69,6 +77,50 @@ public class LimbsApp extends Application {
     }
 
 
+    // Readers and writers
 
+    public void writeToFile(String data) {
+        try {
+            Log.i("MyApp", "writing downloaded to file");
+
+            File file = new File(getFilesDir().getAbsolutePath(), FILENAME);
+            FileOutputStream fos = new FileOutputStream(file);
+            fos.write(data.getBytes());
+            fos.close();
+        }
+        catch (IOException e) {
+            Log.e("Exception", "File write failed: " + e.toString());
+        }
+    }
+
+    public String loadJSON(FileInputStream fis) {
+        String json;
+        try {
+            int size = fis.available();
+            byte[] buffer = new byte[size];
+            fis.read(buffer);
+            fis.close();
+            json = new String(buffer, "UTF-8");
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return json;
+    }
+
+    public String loadJSON(InputStream is) {
+        String json;
+        try {
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8");
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return json;
+    }
 
 }

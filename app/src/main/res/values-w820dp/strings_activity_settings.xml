@@ -5,10 +5,10 @@
 
     <string name="pref_title_map">Map</string>
     <string-array name="pref_map_titles">
-        <item>Where's My Limbs</item>
+        <item>Where\'s My Limbs</item>
     </string-array>
     <string-array name="pref_map_values">
-        <item>http://tednewardsandbox.site44.com/questions.json</item>
+        <item>http://ourserver.com/wml.json</item>
     </string-array>
 
     <string name="pref_title_difficulty">Difficulty</string>
