@@ -13,5 +13,7 @@ public class ActivityGame extends Activity {
         /* Gray out button
         btnSubmit.setEnabled(true);
          */
+
+        // Kill (finish) activity before showing end screen
     }
 }

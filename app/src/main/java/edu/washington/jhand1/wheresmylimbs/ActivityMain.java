@@ -15,8 +15,6 @@ public class ActivityMain extends Activity {
         setContentView(R.layout.activity_main);
         PreferenceManager.setDefaultValues(this, R.xml.pref_settings, false);
 
-        LimbsApp limbsApp = (LimbsApp) getApplication();
-
         Button btnPlay = (Button) findViewById(R.id.btnPlay);
         Button btnSettings = (Button) findViewById(R.id.btnSettings);
 
@@ -35,5 +33,7 @@ public class ActivityMain extends Activity {
                 startActivity(game);
             }
         });
+
+        // Add networking
     }
 }

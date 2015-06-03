@@ -18,16 +18,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ActivityDeath"
+            android:name=".ActivityEnd"
             android:label="@string/title_activity_activity_death" >
         </activity>
         <activity
             android:name=".ActivitySettings"
             android:label="@string/title_activity_settings" >
-        </activity>
-        <activity
-            android:name=".ActivityVictory"
-            android:label="@string/title_activity_activity_victory" >
         </activity>
         <activity
             android:name=".ActivityGame"
