@@ -1,0 +1,20 @@
+<resources>
+    <string name="title_activity_settings">Settings</string>
+
+    <string name="pref_header">Game Settings</string>
+
+    <string name="pref_title_url">Map Download URL</string>
+    <string name="pref_default_url">http://tednewardsandbox.site44.com/questions.json</string>
+
+    <string name="pref_title_difficulty">Difficulty</string>
+    <string-array name="pref_difficulty_titles">
+        <item>Hard</item>
+        <item>Insane</item>
+        <item>Realism</item>
+    </string-array>
+    <string-array name="pref_difficulty_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+</resources>

@@ -1,10 +1,8 @@
 <resources>
     <string name="app_name">Where\'s My Limbs</string>
 
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-
 <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_preferences">PreferencesActivity</string>
+    <string name="title_activity_activity_death">ActivityDeath</string>
+    <string name="title_activity_activity_victory">ActivityVictory</string>
+    <string name="title_activity_activity_game">ActivityGame</string>
 </resources>
