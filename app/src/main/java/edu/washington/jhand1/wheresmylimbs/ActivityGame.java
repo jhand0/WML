@@ -10,6 +10,8 @@ public class ActivityGame extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+
+
         /* Gray out button
         btnSubmit.setEnabled(true);
          */

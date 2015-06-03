@@ -6,37 +6,37 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link FragmentRoom.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link FragmentRoom#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class FragmentRoom extends Fragment {
 
-    public static FragmentRoom newInstance(String param1, String param2) {
-        FragmentRoom fragment = new FragmentRoom();
-        return fragment;
-    }
+    public String roomTitle;
+    public String roomDescription;
+    public String roomUpdate;
 
-    public FragmentRoom() {
-        // Required empty public constructor
+    public static FragmentRoom newInstance(String roomTitle, String roomDescription,
+                                           String roomUpdate) {
+        FragmentRoom fragment = new FragmentRoom();
+        fragment.roomTitle = roomTitle;
+        fragment.roomDescription = roomDescription;
+        fragment.roomUpdate = roomUpdate;
+        return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_room, container, false);
+        View view = inflater.inflate(R.layout.fragment_room, container, false);
+        ((TextView) view.findViewById(R.id.txtRoomTitle)).setText(roomTitle);
+        ((TextView) view.findViewById(R.id.txtRoomDescription)).setText(roomDescription);
+        ((TextView) view.findViewById(R.id.txtRoomUpdate)).setText(roomUpdate);
+        return view;
     }
 
     @Override
