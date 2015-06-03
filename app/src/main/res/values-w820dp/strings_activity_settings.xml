@@ -3,8 +3,13 @@
 
     <string name="pref_header">Game Settings</string>
 
-    <string name="pref_title_url">Map Download URL</string>
-    <string name="pref_default_url">http://tednewardsandbox.site44.com/questions.json</string>
+    <string name="pref_title_map">Map</string>
+    <string-array name="pref_map_titles">
+        <item>Where's My Limbs</item>
+    </string-array>
+    <string-array name="pref_map_values">
+        <item>http://tednewardsandbox.site44.com/questions.json</item>
+    </string-array>
 
     <string name="pref_title_difficulty">Difficulty</string>
     <string-array name="pref_difficulty_titles">
