@@ -13,7 +13,7 @@ import android.util.Log;
 
 public class DownloadService extends IntentService {
 
-    public static final String tag = "LimbsApp/DownloadService";
+    public static final String tag = "LimbsApp/Download";
 
     public DownloadService() {
         super("DownloadService");
