@@ -11,7 +11,7 @@ public class Room {
     private List<String> items; //main item to be found in the room (i.e. limb)
     private int x;
     private int y;
-    private List<String> availableDirections;
+    private List<Direction> availableDirections;
 
     public Room(String name, List<String> items, int x, int y) {
         this.name = name;
@@ -37,8 +37,12 @@ public class Room {
         items.add(item);
     }
 
-    public void addDirection(String direction) {
+    public void addDirection(Direction direction) {
         availableDirections.add(direction);
+    }
+
+    public List<Direction> getAvailableDirections() {
+        return availableDirections;
     }
 
 }

@@ -21,6 +21,7 @@ public class MainActivity extends ActionBarActivity {
         try {
             InputStream json = getAssets().open("adventure.json");
             repo.readJSONFile(json);
+            json.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

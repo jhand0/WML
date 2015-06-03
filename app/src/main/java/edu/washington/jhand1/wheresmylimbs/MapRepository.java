@@ -99,7 +99,8 @@ public class MapRepository {
         }
         JSONArray jsonDirections = room.getJSONArray("available_directions");
         for (int i = 0; i < jsonDirections.length(); i++) {
-            adventureRoom.addDirection(jsonDirections.getString(i));
+            Direction direction = checkDirection(jsonDirections.getString(i));
+            adventureRoom.addDirection(direction);
         }
         rooms.add(adventureRoom);
         board[x][y] = adventureRoom; //puts room on the board
@@ -110,5 +111,26 @@ public class MapRepository {
         for (int i = 0; i < jsonObjectives.length(); i++) {
             objectiveItems.add(jsonObjectives.getString(i));
         }
+    }
+
+    private Direction checkDirection(String dirString) {
+        Direction direction = Direction.NORTH;
+        switch (dirString) {
+            case "north":
+                direction = Direction.NORTH;
+                break;
+            case "south":
+                direction = Direction.SOUTH;
+                break;
+            case "east":
+                direction = Direction.EAST;
+                break;
+            case "west":
+                direction = Direction.WEST;
+                break;
+            default: break;
+        }
+
+        return direction;
     }
 }
