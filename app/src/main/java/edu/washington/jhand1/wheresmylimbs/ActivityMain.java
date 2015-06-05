@@ -67,8 +67,6 @@ public class ActivityMain extends Activity {
     protected void onResume() {
         super.onResume();
 
-        limbsApp.createRepo();
-
 //        // Start download for new map
 //        Intent downloadMap = new Intent(ActivityMain.this, DownloadService.class);
 //        startService(downloadMap);

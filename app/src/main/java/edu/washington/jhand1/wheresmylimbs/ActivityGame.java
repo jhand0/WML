@@ -104,11 +104,13 @@ public class ActivityGame extends Activity {
             Intent end = new Intent(ActivityGame.this, ActivityEnd.class);
             end.putExtra("win", true);
             startActivity(end);
+            limbsApp.createRepo();
             finish();
         } else if (limbsApp.movesLeft() < 0) {
             Intent end = new Intent(ActivityGame.this, ActivityEnd.class);
             end.putExtra("win", false);
             startActivity(end);
+            limbsApp.createRepo();
             finish();
         } else {
             txtTurns.setText("" + limbsApp.movesLeft());
@@ -177,9 +179,9 @@ public class ActivityGame extends Activity {
     }
 
     private void updateButtons() {
-//        btnNorth.setEnabled(limbsApp.canMove(Direction.NORTH));
-//        btnEast.setEnabled(limbsApp.canMove(Direction.EAST));
-//        btnSouth.setEnabled(limbsApp.canMove(Direction.SOUTH));
-//        btnWest.setEnabled(limbsApp.canMove(Direction.WEST));
+        btnNorth.setEnabled(limbsApp.canMove(Direction.NORTH));
+        btnEast.setEnabled(limbsApp.canMove(Direction.EAST));
+        btnSouth.setEnabled(limbsApp.canMove(Direction.SOUTH));
+        btnWest.setEnabled(limbsApp.canMove(Direction.WEST));
     }
 }

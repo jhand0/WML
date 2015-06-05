@@ -14,6 +14,8 @@ public class ActivityEnd extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_end);
 
+
+
         boolean win = getIntent().getBooleanExtra("win", false);
 
         LimbsApp limbsApp = (LimbsApp) getApplication();
