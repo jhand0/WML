@@ -40,11 +40,7 @@
                 android:background="@drawable/border"
                 android:padding="5dp"
                 android:id="@+id/linearLayout"
-                android:layout_marginBottom="40dp"><![CDATA[
-        =======
-            >>>>>>> c37af9f675a8180d31fd90122f94931b582a3d5b
-
-                ]]>
+                android:layout_marginBottom="40dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -75,8 +71,6 @@
                     android:layout_below="@+id/textView"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:layout_alignEnd="@+id/textView"
-                    android:layout_alignLeft="@+id/textView"
                     android:layout_gravity="center_horizontal" />
             </LinearLayout>
 
@@ -100,9 +94,6 @@
                     android:textColor="#ffffff"
                     android:typeface="serif"
                     android:textSize="30dp"
-                    android:layout_alignTop="@+id/body"
-                    android:layout_toRightOf="@+id/body"
-                    android:layout_toEndOf="@+id/body"
                     android:layout_gravity="right|center_vertical" />
 
                 <TextView
@@ -151,7 +142,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:id="@+id/txtIcon2"
+                    android:id="@+id/txtIcon4"
                     android:textColor="#ffffff"
                     android:text=" \\_"
                     android:typeface="serif"
@@ -307,7 +298,7 @@
                     android:text="v"
                     android:id="@+id/btnSouth"
                     android:gravity="center|center_horizontal|fill_vertical"
-                    android:textSize="25\dp"
+                    android:textSize="25dp"
                     android:background="#ff636275"
                     android:textColor="#ffd5d5d5"
                     android:layout_alignParentEnd="false"

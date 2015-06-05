@@ -20,21 +20,21 @@ public class ActivityEnd extends Activity {
 
         LimbsApp limbsApp = (LimbsApp) getApplication();
 
-        TextView txtImage = (TextView) findViewById(R.id.txtImage);
+        // txtImage = (TextView) findViewById(R.id.txtImage);
         TextView txtWinLose = (TextView) findViewById(R.id.txtWinLose);
         TextView txtMessage = (TextView) findViewById(R.id.txtMessage);
         Button btnRestart = (Button) findViewById(R.id.btnRestart);
         Button btnMainMenu = (Button) findViewById(R.id.btnMenu);
 
-        if (win) {
-            txtImage.setText(":)");
-            txtWinLose.setText("YOU WIN");
-            txtMessage.setText(limbsApp.getVictoryMessage());
-        } else {
-            txtImage.setText(":(");
-            txtWinLose.setText("YOU LOSE");
-            txtMessage.setText(limbsApp.getDeathMessage());
-        }
+//        if (win) {
+//            txtImage.setText(":)");
+//            txtWinLose.setText("YOU WIN");
+//            txtMessage.setText(limbsApp.getVictoryMessage());
+//        } else {
+//            txtImage.setText(":(");
+//            txtWinLose.setText("YOU LOSE");
+//            txtMessage.setText(limbsApp.getDeathMessage());
+//        }
 
         btnRestart.setOnClickListener(new View.OnClickListener() {
             @Override
