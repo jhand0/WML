@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
@@ -180,8 +181,36 @@ public class ActivityGame extends Activity {
 
     private void updateButtons() {
         btnNorth.setEnabled(limbsApp.canMove(Direction.NORTH));
+        if (limbsApp.canMove(Direction.NORTH)) {
+            btnNorth.setTextColor(getResources().getColor(R.color.btnTextEnable));
+            btnNorth.setBackgroundColor(getResources().getColor(R.color.btnBackgroundEnable));
+        } else {
+            btnNorth.setTextColor(getResources().getColor(R.color.btnTextDisable));
+            btnNorth.setBackgroundColor(getResources().getColor(R.color.btnBackgroundDisable));
+        }
         btnEast.setEnabled(limbsApp.canMove(Direction.EAST));
+        if (limbsApp.canMove(Direction.EAST)) {
+            btnEast.setTextColor(getResources().getColor(R.color.btnTextEnable));
+            btnEast.setBackgroundColor(getResources().getColor(R.color.btnBackgroundEnable));
+        } else {
+            btnEast.setTextColor(getResources().getColor(R.color.btnTextDisable));
+            btnEast.setBackgroundColor(getResources().getColor(R.color.btnBackgroundDisable));
+        }
         btnSouth.setEnabled(limbsApp.canMove(Direction.SOUTH));
+        if (limbsApp.canMove(Direction.SOUTH)) {
+            btnSouth.setTextColor(getResources().getColor(R.color.btnTextEnable));
+            btnSouth.setBackgroundColor(getResources().getColor(R.color.btnBackgroundEnable));
+        } else {
+            btnSouth.setTextColor(getResources().getColor(R.color.btnTextDisable));
+            btnSouth.setBackgroundColor(getResources().getColor(R.color.btnBackgroundDisable));
+        }
         btnWest.setEnabled(limbsApp.canMove(Direction.WEST));
+        if (limbsApp.canMove(Direction.WEST)) {
+            btnWest.setTextColor(getResources().getColor(R.color.btnTextEnable));
+            btnWest.setBackgroundColor(getResources().getColor(R.color.btnBackgroundEnable));
+        } else {
+            btnWest.setTextColor(getResources().getColor(R.color.btnTextDisable));
+            btnWest.setBackgroundColor(getResources().getColor(R.color.btnBackgroundDisable));
+        }
     }
 }

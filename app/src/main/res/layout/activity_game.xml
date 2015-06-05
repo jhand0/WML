@@ -114,6 +114,7 @@
             android:layout_gravity="left|bottom" />
     </FrameLayout>
 
+<<<<<<< HEAD
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="wrap_content"
@@ -125,6 +126,21 @@
         android:background="@drawable/border"
         android:padding="5dp"
         android:id="@+id/linearLayout">
+=======
+    <Button
+        style="@android:style/MediaButton.Play"
+        android:layout_width="90dp"
+        android:layout_height="50dp"
+        android:text="^"
+        android:id="@+id/btnNorth"
+        android:gravity="center|center_horizontal|fill_vertical"
+        android:textSize="40dp"
+        android:background="#ff4d4c5b"
+        android:textColor="#ffababab"
+        android:layout_marginBottom="4dp"
+        android:layout_above="@+id/btnEast"
+        android:layout_alignRight="@+id/btnSouth" />
+>>>>>>> c37af9f675a8180d31fd90122f94931b582a3d5b
 
         <TextView
             android:layout_width="wrap_content"

@@ -48,7 +48,17 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text=":)"
         android:id="@+id/txtImage"
+<<<<<<< HEAD
         android:textSize="170dp"
+=======
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/txtMessage"
+        android:layout_alignEnd="@+id/txtMessage"
+        android:layout_marginBottom="121dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textSize="150dp"
+>>>>>>> c37af9f675a8180d31fd90122f94931b582a3d5b
         android:textColor="#fffeffff"
         android:textStyle="bold"
         android:gravity="center_horizontal"
