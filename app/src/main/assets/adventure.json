@@ -3,10 +3,10 @@
   "description": "Find your missing limbs!",
   "victory_message": "Congratulations, you beat Where's My Limbs",
   "death_message": "sucks to suck",
-  "xsize": 1,
-  "ysize": 1,
   "startx": 0,
   "starty": 0,
+  "xsize": 3,
+  "ysize": 2,
   "turns": [
 	5,
 	4,
