@@ -70,7 +70,7 @@ public class LimbsApp extends Application {
     // Getters for the game/end activity
 
     public boolean canMove(Direction direction) {
-        return false;
+        return currentRoom.getAvailableDirections().contains(direction);
     }
 
     public void move(Direction direction) {
