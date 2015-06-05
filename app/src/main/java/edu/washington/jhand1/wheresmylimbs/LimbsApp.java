@@ -31,24 +31,31 @@ public class LimbsApp extends Application {
     public LimbsApp() {
         if (instance == null) {
             instance = this;
-            mapRepo = new MapRepository(this);
             items = new ArrayList<>();
-
-            // TODO: Add items to ArrayList here:
-
-            // Stub:
-            items.add(new Item("Left Arm", "*--"));
-            items.add(new Item("Right Arm", "--*"));
-            items.add(new Item("Left Leg", "_/"));
-            items.add(new Item("Right Arm", "\\_"));
-
-            board = mapRepo.getBoard();
-            currX = mapRepo.getStartX();
-            currY = mapRepo.getStartY();
-            allItemsCollected = false;
         } else {
             throw new RuntimeException("Ya got too many Limbs Apps!!");
         }
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        Log.d("LimbsApp", "LimbsApp object has been initialized");
+
+        mapRepo = new MapRepository(this);
+
+        // TODO: Add items to ArrayList here:
+
+        // Stub:
+        items.add(new Item("Left Arm", "*--"));
+        items.add(new Item("Right Arm", "--*"));
+        items.add(new Item("Left Leg", "_/"));
+        items.add(new Item("Right Arm", "\\_"));
+
+        board = mapRepo.getBoard();
+        currX = mapRepo.getStartX();
+        currY = mapRepo.getStartY();
+        allItemsCollected = false;
     }
 
     public static LimbsApp getInstance() {

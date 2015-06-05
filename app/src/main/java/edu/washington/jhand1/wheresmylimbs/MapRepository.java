@@ -21,7 +21,6 @@ public class MapRepository {
     private int startX;
     private int startY;
     private Room[][] board;
-    private String jsonString;
     private String mapTitle;
     private String mapIntro;
     private String deathMessage;
@@ -34,14 +33,12 @@ public class MapRepository {
         InputStream json = null;
         // Gets json from assets and sends it to MapRepo
         try {
-            json = limbsApp.getAssets().open("adventure.json");
-            limbsApp.loadJSON(json);
-            json.close();
+            json = limbsApp.getAssets().open(limbsApp.FILENAME);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        jsonString = limbsApp.loadJSON(json);
+        parseJSONFromFile(limbsApp.loadJSON(json));
     }
 
     public List<String> getObjectiveItems() {
@@ -94,10 +91,8 @@ public class MapRepository {
 
 
     // Reads JSON from a file and parses it into usable objects
-    private void parseJSONFromFile() {
+    private void parseJSONFromFile(String json) {
         try {
-            String json = jsonString;
-
             JSONObject adventure = new JSONObject(json);
 
             JSONArray turns = adventure.getJSONArray("turns");

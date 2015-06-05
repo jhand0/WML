@@ -34,6 +34,7 @@ public class ActivityMain extends Activity {
         setContentView(R.layout.activity_main);
 
         LimbsApp limbsApp = (LimbsApp) getApplication();
+
         PreferenceManager.setDefaultValues(this, R.xml.pref_settings, false);
 
         Button btnPlay = (Button) findViewById(R.id.btnPlay);

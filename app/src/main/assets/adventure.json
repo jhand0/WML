@@ -1,4 +1,4 @@
-{
+[
 	"title" : "Wheres my Limbs?",
 	"description": "Find your missing limbs!",
 	"victory_message" : "Congratulations, you beat Where's My Limbs",
@@ -80,4 +80,4 @@
 			] 
 		}
 	]
-}
+]
