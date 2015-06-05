@@ -44,6 +44,7 @@ public class ActivityGame extends Activity {
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         limbsApp.setDifficulty(Integer.parseInt(preferences.getString("difficulty", null)));
+        items = limbsApp.getItems();
 
         txtTurns = (TextView) findViewById(R.id.txtTurns);
         txtItem1 = (TextView) findViewById(R.id.txtItem1);
@@ -116,7 +117,7 @@ public class ActivityGame extends Activity {
             Fragment room = FragmentRoom.newInstance(limbsApp.getRoomTitle(),
                     limbsApp.getRoomDescription(), limbsApp.getRoomUpdate());
             getFragmentManager().beginTransaction()
-                    .setCustomAnimations(animIn, animOut)
+//                    .setCustomAnimations(animIn, animOut)
                     .replace(R.id.container, room)
                     .commit();
         }
@@ -176,9 +177,9 @@ public class ActivityGame extends Activity {
     }
 
     private void updateButtons() {
-        btnNorth.setEnabled(limbsApp.canMove(Direction.NORTH));
-        btnEast.setEnabled(limbsApp.canMove(Direction.EAST));
-        btnSouth.setEnabled(limbsApp.canMove(Direction.SOUTH));
-        btnWest.setEnabled(limbsApp.canMove(Direction.WEST));
+//        btnNorth.setEnabled(limbsApp.canMove(Direction.NORTH));
+//        btnEast.setEnabled(limbsApp.canMove(Direction.EAST));
+//        btnSouth.setEnabled(limbsApp.canMove(Direction.SOUTH));
+//        btnWest.setEnabled(limbsApp.canMove(Direction.WEST));
     }
 }
