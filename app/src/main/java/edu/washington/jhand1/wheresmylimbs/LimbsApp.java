@@ -83,10 +83,10 @@ public class LimbsApp extends Application {
                     currY--;
                     break;
                 case EAST:
-                    currX--;
+                    currX++;
                     break;
                 case WEST:
-                    currY++;
+                    currX--;
                     break;
             }
         }
