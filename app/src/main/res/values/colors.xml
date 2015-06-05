@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="btnBackgroundDisable">#ff4d4c5b</color>
+    <color name="btnBackgroundDisable">#ff3E3D49</color>
     <color name="btnBackgroundEnable">#ff636275</color>
-    <color name="btnTextDisable">#ffababab</color>
-    <color name="btnTextEnable">#ffd5d5d5</color>
+    <color name="btnTextDisable">#ff898989</color>
+    <color name="btnTextEnable">#ffD5D5D5</color>
 </resources>

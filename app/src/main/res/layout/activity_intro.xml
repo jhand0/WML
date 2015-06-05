@@ -31,7 +31,6 @@
         android:text="Welcome welcome welcome welcome welcome "
         android:id="@+id/txtIntro"
         android:typeface="serif"
-        android:textStyle="italic"
         android:textSize="30dp"
         android:gravity="center_horizontal"
         android:textColor="#ff636275"
@@ -41,7 +40,8 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp" />
+        android:layout_marginRight="10dp"
+        android:textStyle="italic" />
 
     <Button
         style="@android:style/MediaButton.Play"
