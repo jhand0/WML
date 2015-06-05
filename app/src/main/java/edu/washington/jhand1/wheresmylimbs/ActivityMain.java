@@ -63,6 +63,7 @@ public class ActivityMain extends Activity {
             public void onClick(View v) {
                 limbsApp.createRepo();
                 btnPlay.setText(limbsApp.getAdventureTitle());
+                broadcastReceiver();
             }
         });
 
@@ -72,7 +73,21 @@ public class ActivityMain extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
+        limbsApp.createRepo();
+        broadcastReceiver();
+    }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        try {
+            unregisterReceiver(receiver);
+        } catch (IllegalArgumentException e) {
+            // Do nothing
+        }
+    }
+
+    private void broadcastReceiver() {
         // Make sure url is set
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         String adventure = preferences.getString("adventure", null);
@@ -89,13 +104,6 @@ public class ActivityMain extends Activity {
             Log.i(tag, "Starting download service...");
             Intent downloadMap = new Intent(getBaseContext(), DownloadService.class);
             startService(downloadMap);
-        }
-    }
-    @Override
-    protected void onStop() {
-        super.onStop();
-        if (receiver.isOrderedBroadcast()) {
-            unregisterReceiver(receiver);
         }
     }
 

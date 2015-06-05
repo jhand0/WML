@@ -20,9 +20,11 @@ public class ActivityIntro extends Activity {
         LimbsApp limbsApp = (LimbsApp) getApplication();
 
         TextView txtIntro = (TextView) findViewById(R.id.txtIntro);
+        TextView txtMapTitle = (TextView) findViewById(R.id.txtMapTitle);
         Button btnContinue = (Button) findViewById(R.id.btnContinue);
 
         txtIntro.setText(limbsApp.getIntro());
+        txtMapTitle.setText(limbsApp.getAdventureTitle());
 
         btnContinue.setOnClickListener(new View.OnClickListener() {
             @Override
