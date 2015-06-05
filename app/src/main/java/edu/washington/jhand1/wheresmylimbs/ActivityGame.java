@@ -125,7 +125,7 @@ public class ActivityGame extends Activity {
             Fragment room = FragmentRoom.newInstance(limbsApp.getRoomTitle(),
                     limbsApp.getRoomDescription(), limbsApp.getRoomUpdate());
             getFragmentManager().beginTransaction()
-//                    .setCustomAnimations(animIn, animOut)
+                    .setCustomAnimations(animIn, animOut)
                     .replace(R.id.container, room)
                     .commit();
         }
