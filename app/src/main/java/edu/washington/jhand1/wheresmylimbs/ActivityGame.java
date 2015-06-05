@@ -3,7 +3,9 @@ package edu.washington.jhand1.wheresmylimbs;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -40,7 +42,8 @@ public class ActivityGame extends Activity {
 
         limbsApp = (LimbsApp) getApplication();
 
-        limbsApp.setDifficulty(getIntent().getIntExtra("difficulty", 0));
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        limbsApp.setDifficulty(Integer.parseInt(preferences.getString("difficulty", null)));
 
         txtTurns = (TextView) findViewById(R.id.txtTurns);
         txtItem1 = (TextView) findViewById(R.id.txtItem1);

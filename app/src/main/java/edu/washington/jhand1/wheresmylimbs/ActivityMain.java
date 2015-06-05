@@ -8,7 +8,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.ParcelFileDescriptor;
 import android.os.Bundle;
@@ -20,7 +19,6 @@ import android.widget.Toast;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 
 public class ActivityMain extends Activity {
 
@@ -35,6 +33,8 @@ public class ActivityMain extends Activity {
 
         LimbsApp limbsApp = (LimbsApp) getApplication();
 
+        PreferenceManager.setDefaultValues(this, R.xml.pref_settings, false);
+
         Button btnPlay = (Button) findViewById(R.id.btnPlay);
         Button btnSettings = (Button) findViewById(R.id.btnSettings);
 
@@ -42,9 +42,8 @@ public class ActivityMain extends Activity {
         btnPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent game = new Intent(ActivityMain.this, ActivityIntro.class);
-                game.putExtra("difficulty", difficulty);
-                startActivity(game);
+                Intent intro = new Intent(ActivityMain.this, ActivityIntro.class);
+                startActivity(intro);
             }
         });
 
@@ -56,24 +55,21 @@ public class ActivityMain extends Activity {
             }
         });
 
-        // Register receiver to listen for completed downloads
+//        // Register receiver to listen for completed downloads
 //        dm = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
 //        IntentFilter filter = new IntentFilter();
 //        filter.addAction(DownloadManager.ACTION_DOWNLOAD_COMPLETE);
 //        registerReceiver(receiver, filter);
     }
 
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//
-//        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-//        difficulty = Integer.parseInt(preferences.getString("difficulty", null));
-//
+    @Override
+    protected void onResume() {
+        super.onResume();
+
 //        // Start download for new map
 //        Intent downloadMap = new Intent(ActivityMain.this, DownloadService.class);
 //        startService(downloadMap);
-//    }
+    }
 
     // This is your receiver that you registered in the onCreate that will receive any messages
     // that match a download-complete like broadcast
