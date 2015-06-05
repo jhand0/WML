@@ -30,6 +30,56 @@
             android:layout_weight="0.4"
             android:gravity="center">
 
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/container"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:background="@drawable/border"
+                android:padding="5dp"
+                android:id="@+id/linearLayout"
+                android:layout_marginBottom="40dp"><![CDATA[
+        =======
+            >>>>>>> c37af9f675a8180d31fd90122f94931b582a3d5b
+
+                ]]>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="TURNS LEFT"
+                    android:id="@+id/textView"
+                    android:textStyle="bold"
+                    android:typeface="serif"
+                    android:textColor="#ffd5d5d5"
+                    android:gravity="center_horizontal"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_gravity="center_horizontal" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="10"
+                    android:id="@+id/txtTurns"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"
+                    android:typeface="sans"
+                    android:textSize="30dp"
+                    android:gravity="center_horizontal"
+                    android:layout_below="@+id/textView"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignEnd="@+id/textView"
+                    android:layout_alignLeft="@+id/textView"
+                    android:layout_gravity="center_horizontal" />
+            </LinearLayout>
+
             <FrameLayout
                 android:layout_width="90dp"
                 android:layout_height="130dp"
@@ -39,8 +89,7 @@
                 android:padding="3dp"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginBottom="40dp">
+                android:layout_alignParentStart="true">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -127,54 +176,6 @@
                     android:layout_gravity="left|bottom" />
             </FrameLayout>
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/container"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:background="@drawable/border"
-                android:padding="5dp"
-                android:id="@+id/linearLayout"><![CDATA[
-        =======
-            >>>>>>> c37af9f675a8180d31fd90122f94931b582a3d5b
-
-                ]]>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="TURNS LEFT"
-                    android:id="@+id/textView"
-                    android:textStyle="bold"
-                    android:typeface="serif"
-                    android:textColor="#ffd5d5d5"
-                    android:gravity="center_horizontal"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_gravity="center_horizontal" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="10"
-                    android:id="@+id/txtTurns"
-                    android:textColor="#ffffff"
-                    android:textStyle="bold"
-                    android:typeface="sans"
-                    android:textSize="30dp"
-                    android:gravity="center_horizontal"
-                    android:layout_below="@+id/textView"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignEnd="@+id/textView"
-                    android:layout_alignLeft="@+id/textView"
-                    android:layout_gravity="center_horizontal" />
-            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
