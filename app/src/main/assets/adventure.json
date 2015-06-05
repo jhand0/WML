@@ -1,12 +1,12 @@
 {
-  "title": "Wheres my Limbs?",
-  "description": "Find your missing limbs!",
-  "victory_message": "Congratulations, you beat Where's My Limbs",
-  "death_message": "sucks to suck",
+  "title": "Wheres my...?",
+  "description": "Find your...?",
+  "victory_message": "",
+  "death_message": "Sucks",
   "startx": 0,
   "starty": 0,
-  "xsize": 3,
-  "ysize": 3,
+  "xsize": 1,
+  "ysize": 2,
   "turns": [
 	5,
 	4,
@@ -31,20 +31,9 @@
 	}
   ],
   "rooms": [
-  	{
-	  "xcoordinate": 0,
-	  "ycoordinate": 0,
-	  "room_title": "Opening",
-	  "room_description": "First team bitch",
-	  "room_item": [
-	  ],
-	  "available_directions": [
-		"north"
-	  ]
-	},
 	{
 	  "xcoordinate": 0,
-	  "ycoordinate": 1,
+	  "ycoordinate": 0,
 	  "room_title": "Castle courtyard",
 	  "room_description": "You are in the castle courtyard",
 	  "room_item": [
@@ -54,15 +43,14 @@
 		}
 	  ],
 	  "available_directions": [
-		"north",
-		"south"
+		"north"
 	  ]
 	},
 	{
 	  "xcoordinate": 0,
-	  "ycoordinate": 2,
-	  "room_title": "Room 2",
-	  "room_description": "Ya bitch, Room 2 comin at you",
+	  "ycoordinate": 1,
+	  "room_title": "Kitchen",
+	  "room_description": "You are staring at delicious food, but you're not hungry because you don't have your limbs",
 	  "room_item": [
 		{
 	  		"title": "Right Arm",
@@ -70,39 +58,7 @@
 		}
 	  ],
 	  "available_directions": [
-		"east",
 		"south"
-	  ]
-	},
-	{
-	  "xcoordinate": 1,
-	  "ycoordinate": 2,
-	  "room_title": "Room 3",
-	  "room_description": "Getting closer slut",
-	  "room_item": [
-		{
-	  		"title": "Left Leg",
-	  		"ascii": "_/"
-		}
-	  ],
-	  "available_directions": [
-		"east",
-		"west"
-	  ]
-	},
-	{
-	  "xcoordinate": 2,
-	  "ycoordinate": 2,
-	  "room_title": "Room 4",
-	  "room_description": "Last room bitch boy",
-	  "room_item": [
-		{
-	  		"title": "Right Leg",
-	  		"ascii": "\\_"
-		}
-	  ],
-	  "available_directions": [
-		"west"
 	  ]
 	}
   ]

@@ -1,5 +1,7 @@
 package edu.washington.jhand1.wheresmylimbs;
 
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -18,6 +20,9 @@ import java.util.List;
  * Created by Jordan on 5/28/2015.
  */
 public class MapRepository {
+
+    public static final String tag = "LimbsApp/MapRepo";
+
     private List<Item> objectiveItems;
     private List<Room> rooms;
     private int[] moves; // Turn counts from easy to hard
@@ -35,21 +40,38 @@ public class MapRepository {
         objectiveItems = new ArrayList<>();
         rooms = new ArrayList<>();
 
-        InputStream json = null;
-        // Gets json from assets and sends it to MapRepo
-        try {
-            //File jsonFile = new File(LimbsApp.getInstance().getFilesDir().getAbsolutePath(), "/data.json");
-            FileInputStream fis = LimbsApp.getInstance().openFileInput("data.json");
-            json = fis;
-        } catch (FileNotFoundException sad) {
+        String json = "";
+        File jsonFile = new File(LimbsApp.getInstance().getFilesDir().getAbsolutePath(),
+                LimbsApp.FILENAME);
+
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(limbsApp);
+        String adventure = preferences.getString("adventure", null);
+
+        if (adventure != null && !adventure.equals("tutorial") && jsonFile.exists()) {
+            Log.i(tag, "File found!");
             try {
-                json = limbsApp.getAssets().open(LimbsApp.FILENAME);
+                FileInputStream fis = LimbsApp.getInstance().openFileInput(LimbsApp.FILENAME);
+                json = limbsApp.loadJSON(fis);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        } else {
+            Log.i(tag, "File not found! Fetching from assets.");
+            try {
+                InputStream is = limbsApp.getAssets().open(LimbsApp.FILENAME);
+                json = limbsApp.loadJSON(is);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
 
-        parseJSONFromFile(limbsApp.loadJSON(json));
+        parseJSONFromFile(json);
+    }
+
+    public MapRepository(String json) {
+        objectiveItems = new ArrayList<>();
+        rooms = new ArrayList<>();
+        parseJSONFromFile(json);
     }
 
     public List<Item> getObjectiveItems() {

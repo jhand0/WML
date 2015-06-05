@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.ParcelFileDescriptor;
 import android.os.Bundle;
@@ -24,8 +25,8 @@ public class ActivityMain extends Activity {
 
     public static final String tag = "LimbsApp/ActivityMain";
     private DownloadManager dm;
-    private int difficulty;
     LimbsApp limbsApp;
+    Button btnPlay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +37,9 @@ public class ActivityMain extends Activity {
 
         PreferenceManager.setDefaultValues(this, R.xml.pref_settings, false);
 
-        Button btnPlay = (Button) findViewById(R.id.btnPlay);
+        btnPlay = (Button) findViewById(R.id.btnPlay);
         Button btnSettings = (Button) findViewById(R.id.btnSettings);
+        Button btnRefresh = (Button) findViewById(R.id.btnRefresh);
 
         btnPlay.setText(limbsApp.getAdventureTitle());
         btnPlay.setOnClickListener(new View.OnClickListener() {
@@ -56,25 +58,50 @@ public class ActivityMain extends Activity {
             }
         });
 
-//        // Register receiver to listen for completed downloads
-//        dm = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
-//        IntentFilter filter = new IntentFilter();
-//        filter.addAction(DownloadManager.ACTION_DOWNLOAD_COMPLETE);
-//        registerReceiver(receiver, filter);
+        btnRefresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                limbsApp.createRepo();
+                btnPlay.setText(limbsApp.getAdventureTitle());
+            }
+        });
+
+        dm = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
-//        // Start download for new map
-//        Intent downloadMap = new Intent(ActivityMain.this, DownloadService.class);
-//        startService(downloadMap);
+        // Make sure url is set
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String adventure = preferences.getString("adventure", null);
+
+        // Download new map
+        if (adventure != null && !adventure.equals("tutorial")) {
+            // Register receiver to listen for completed downloads
+            Log.i(tag, "Download listener fired up.");
+            IntentFilter filter = new IntentFilter();
+            filter.addAction(DownloadManager.ACTION_DOWNLOAD_COMPLETE);
+            registerReceiver(receiver, filter);
+
+            // Start download for new map
+            Log.i(tag, "Starting download service...");
+            Intent downloadMap = new Intent(getBaseContext(), DownloadService.class);
+            startService(downloadMap);
+        }
+    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (receiver.isOrderedBroadcast()) {
+            unregisterReceiver(receiver);
+        }
     }
 
     // This is your receiver that you registered in the onCreate that will receive any messages
     // that match a download-complete like broadcast
-    private final BroadcastReceiver receiver = new BroadcastReceiver() {
+    public final BroadcastReceiver receiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
@@ -113,32 +140,27 @@ public class ActivityMain extends Activity {
                                     LimbsApp limbsApp = (LimbsApp) getApplication();
                                     String json = limbsApp.loadJSON(fis);
 
-                                    // Write json string to file
-                                    limbsApp.writeToFile(json);
+                                    // Test valid json
+                                    if (limbsApp.createRepo(json)) {
+                                        // Write json string to file
+                                        limbsApp.writeToFile(json);
+                                    }
+                                    Log.i(tag, "Download finished.");
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 } catch (Exception e) {
-                                    Toast.makeText(ActivityMain.this, "Couldn't download map.",
+                                    Log.i(tag, "Map parsing failed.");
+                                    Toast.makeText(ActivityMain.this, "We forgot where we" +
+                                                    "put your limbs. Please choose a different" +
+                                                    "map.",
                                             Toast.LENGTH_LONG).show();
                                 }
                                 break;
                             case DownloadManager.STATUS_FAILED:
-                                Log.i(tag, "Download failed");
-                                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ActivityMain.this);
-                                alertDialogBuilder.setTitle("Download Failed")
-                                        .setMessage("Would you like to try again? Hit no to quit the app.")
-                                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                                            public void onClick(DialogInterface dialog,int id) {
-                                                dialog.cancel();
-                                            }
-                                        })
-                                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                                            public void onClick(DialogInterface dialog,int id) {
-                                                System.exit(0);
-                                            }
-                                        })
-                                        .create()
-                                        .show();
+                                Log.i(tag, "Download failed.");
+                                Toast.makeText(ActivityMain.this, "Couldn't download the map. " +
+                                                "Please refresh to try again.",
+                                        Toast.LENGTH_LONG).show();
                                 break;
                         }
                     }

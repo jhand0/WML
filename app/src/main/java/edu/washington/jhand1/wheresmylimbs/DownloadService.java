@@ -29,17 +29,17 @@ public class DownloadService extends IntentService {
         if (isConnected) {
             // Specify the url you want to download here
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-            String map = preferences.getString("map", null);
+            String adventure = preferences.getString("adventure", null);
 
-            Log.i(tag, "downloading from: " + map);
+            Log.i(tag, "downloading from: " + adventure);
 
             // Start the download
             DownloadManager dm = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
             try {
-                DownloadManager.Request request = new DownloadManager.Request(Uri.parse(map));
+                DownloadManager.Request request = new DownloadManager.Request(Uri.parse(adventure));
                 dm.enqueue(request);
             } catch (IllegalArgumentException e) {
-                Log.i(tag, "cannot download map from: " + map);
+                Log.i(tag, "cannot download map from: " + adventure);
             }
         } else {
             Log.i(tag, "No connectivity");

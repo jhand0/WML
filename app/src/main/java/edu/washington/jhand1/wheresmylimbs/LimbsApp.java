@@ -43,14 +43,7 @@ public class LimbsApp extends Application {
         Log.d("LimbsApp", "LimbsApp object has been initialized");
 
         mapRepo = new MapRepository(this);
-
-        items = mapRepo.getObjectiveItems();
-
-        board = mapRepo.getBoard();
-        currX = mapRepo.getStartX();
-        currY = mapRepo.getStartY();
-        currentRoom = board[currX][currY];
-        allItemsCollected = false;
+        setup();
     }
 
     public static LimbsApp getInstance() {
@@ -103,7 +96,6 @@ public class LimbsApp extends Application {
             }
         }
 
-        // TODO: Add code to check if all items found; if so, flip allItemsCollected boolean
         boolean checkColl = true;
         for (int i = 0; i < items.size(); i++) {
             if (!items.get(i).isCollected()) {
@@ -126,7 +118,6 @@ public class LimbsApp extends Application {
     }
 
     public String getRoomUpdate() {
-        // TODO: implement this method:
         List<Item> roomItems = currentRoom.getItems();
         String update = "";
         if (!roomItems.isEmpty()) {
@@ -168,15 +159,38 @@ public class LimbsApp extends Application {
     }
 
     public void createRepo() {
-        // TODO: implement method for creating a new repo
         mapRepo = new MapRepository(this);
+        setup();
+    }
 
+    public boolean createRepo(String json) {
+        try {
+            mapRepo = new MapRepository(json);
+        } catch (IllegalStateException e) {
+            return false;
+        }
+
+        setup();
+        return true;
+    }
+
+    private void setup() {
         items = mapRepo.getObjectiveItems();
-
         board = mapRepo.getBoard();
         currX = mapRepo.getStartX();
         currY = mapRepo.getStartY();
         currentRoom = board[currX][currY];
+
+        List<Item> roomItems = currentRoom.getItems();
+        for (int i = 0; i < roomItems.size(); i++) {
+            for (int j = 0; j < items.size(); j++) {
+                if (items.get(j).equals(roomItems.get(i))) {
+                    items.get(j).collect();
+                    break;
+                }
+            }
+        }
+
         allItemsCollected = false;
     }
 
