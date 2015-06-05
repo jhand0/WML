@@ -5,6 +5,7 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
@@ -16,6 +17,7 @@ import java.util.List;
 public class ActivityGame extends Activity {
 
     LimbsApp limbsApp;
+    MediaPlayer mp;
     List<Item> items;
 
     TextView txtTurns;
@@ -45,6 +47,9 @@ public class ActivityGame extends Activity {
         setContentView(R.layout.activity_game);
 
         limbsApp = (LimbsApp) getApplication();
+
+        mp = MediaPlayer.create(getApplicationContext(), R.raw.bittrack);
+        mp.start();
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         limbsApp.setDifficulty(Integer.parseInt(preferences.getString("difficulty", null)));
@@ -112,19 +117,36 @@ public class ActivityGame extends Activity {
                 Intent end = new Intent(ActivityGame.this, ActivityEnd.class);
                 end.putExtra("win", win);
                 startActivity(end);
+                mp.stop();
                 finish();
             }
         });
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        mp.start();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mp.pause();
+    }
+
+    @Override
     public void onBackPressed() {
         super.onBackPressed();
-
+        mp.stop();
         limbsApp.createRepo();
     }
 
     private void update() {
+        // Play soundbite
+        MediaPlayer mp2 = MediaPlayer.create(getApplicationContext(), R.raw.mylimbs);
+        mp2.start();
+
         if (limbsApp.allItemsCollected()) {
             win = true;
         } else if (limbsApp.movesLeft() <= 0) {
