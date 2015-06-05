@@ -8,11 +8,10 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.ParcelFileDescriptor;
-import android.preference.PreferenceManager;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -20,29 +19,21 @@ import android.widget.Toast;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 
 public class ActivityMain extends Activity {
 
     public static final String tag = "LimbsApp/ActivityMain";
     private DownloadManager dm;
     private int difficulty;
+    LimbsApp limbsApp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //gets json from assets and sends it to MapRepo
-        try {
-            InputStream json = getAssets().open("adventure.json");
-            LimbsApp.getInstance().getMapRepository().readJSONFile(json);
-            json.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        limbsApp = (LimbsApp) getApplication();
 
-        LimbsApp limbsApp = (LimbsApp) getApplication();
         PreferenceManager.setDefaultValues(this, R.xml.pref_settings, false);
 
         Button btnPlay = (Button) findViewById(R.id.btnPlay);
@@ -52,9 +43,8 @@ public class ActivityMain extends Activity {
         btnPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent game = new Intent(ActivityMain.this, ActivityIntro.class);
-                game.putExtra("difficulty", difficulty);
-                startActivity(game);
+                Intent intro = new Intent(ActivityMain.this, ActivityIntro.class);
+                startActivity(intro);
             }
         });
 
@@ -66,23 +56,22 @@ public class ActivityMain extends Activity {
             }
         });
 
-        // Register receiver to listen for completed downloads
-        dm = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
-        IntentFilter filter = new IntentFilter();
-        filter.addAction(DownloadManager.ACTION_DOWNLOAD_COMPLETE);
-        registerReceiver(receiver, filter);
+//        // Register receiver to listen for completed downloads
+//        dm = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
+//        IntentFilter filter = new IntentFilter();
+//        filter.addAction(DownloadManager.ACTION_DOWNLOAD_COMPLETE);
+//        registerReceiver(receiver, filter);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        difficulty = Integer.parseInt(preferences.getString("difficulty", null));
+        limbsApp.createRepo();
 
-        // Start download for new map
-        Intent downloadMap = new Intent(ActivityMain.this, DownloadService.class);
-        startService(downloadMap);
+//        // Start download for new map
+//        Intent downloadMap = new Intent(ActivityMain.this, DownloadService.class);
+//        startService(downloadMap);
     }
 
     // This is your receiver that you registered in the onCreate that will receive any messages

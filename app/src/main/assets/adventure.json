@@ -1,38 +1,105 @@
 {
-	"title" : "Wheres my Limbs?",
-	"description": "Find your missing limbs!",
-	"xsize": 1,
-	"ysize": 1,
-	"turns": [
-		5,
-		4,
-		3
-	],
-	"objectives": [
-		"Right Arm",
-		"Left Arm",
-		"Right Leg",
-		"Left Leg"
-	],
-
-	"rooms" : [
-			{
-			"xcoordinate": 0,
-			"ycoordinate": 0,
-			"room_title": "Castle courtyard",
-			"room_description": "You are in the castle courtyard",
-			"room_items": [
-				"Left Arm",
-				"Right Arm",
-				"Left Leg",
-				"Right Leg"
-			],
-			"available_directions" : [ 
-				"north",
-				"east",
-				"south",
-				"west"
-			] 
-		} 
-	] 
+  "title": "Wheres my Limbs?",
+  "description": "Find your missing limbs!",
+  "victory_message": "Congratulations, you beat Where's My Limbs",
+  "death_message": "sucks to suck",
+  "startx": 0,
+  "starty": 0,
+  "xsize": 3,
+  "ysize": 3,
+  "turns": [
+	5,
+	4,
+	3
+  ],
+  "objectives": [
+	{
+	  "title": "Right Arm",
+	  "ascii": "--*"
+	},
+	{
+	  "title": "Left Arm",
+	  "ascii": "*--"
+	},
+	{
+	  "title": "Left Leg",
+	  "ascii": "_/"
+	},
+	{
+	  "title": "Right Leg",
+	  "ascii": "\\_"
+	}
+  ],
+  "rooms": [
+  	{
+	  "xcoordinate": 0,
+	  "ycoordinate": 0,
+	  "room_title": "Opening",
+	  "room_description": "First team bitch",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"north"
+	  ]
+	},
+	{
+	  "xcoordinate": 0,
+	  "ycoordinate": 1,
+	  "room_title": "Castle courtyard",
+	  "room_description": "You are in the castle courtyard",
+	  "room_item": [
+		{
+	  		"title": "Left Arm",
+	  		"ascii": "*--"
+		}
+	  ],
+	  "available_directions": [
+		"north"
+	  ]
+	},
+	{
+	  "xcoordinate": 0,
+	  "ycoordinate": 2,
+	  "room_title": "Room 2",
+	  "room_description": "Ya bitch, Room 2 comin at you",
+	  "room_item": [
+		{
+	  		"title": "Right Arm",
+	  		"ascii": "--*"
+		}
+	  ],
+	  "available_directions": [
+		"east"
+	  ]
+	},
+	{
+	  "xcoordinate": 1,
+	  "ycoordinate": 2,
+	  "room_title": "Room 3",
+	  "room_description": "Getting closer slut",
+	  "room_item": [
+		{
+	  		"title": "Left Leg",
+	  		"ascii": "_/"
+		}
+	  ],
+	  "available_directions": [
+		"east"
+	  ]
+	},
+	{
+	  "xcoordinate": 2,
+	  "ycoordinate": 2,
+	  "room_title": "Room 4",
+	  "room_description": "Last room bitch boy",
+	  "room_item": [
+		{
+	  		"title": "Right Leg",
+	  		"ascii": "\\_"
+		}
+	  ],
+	  "available_directions": [
+	  ]
+	}
+  ]
 }

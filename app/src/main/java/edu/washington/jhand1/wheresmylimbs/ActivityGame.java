@@ -3,7 +3,9 @@ package edu.washington.jhand1.wheresmylimbs;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -39,6 +41,10 @@ public class ActivityGame extends Activity {
         setContentView(R.layout.activity_game);
 
         limbsApp = (LimbsApp) getApplication();
+
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        limbsApp.setDifficulty(Integer.parseInt(preferences.getString("difficulty", null)));
+        items = limbsApp.getItems();
 
         txtTurns = (TextView) findViewById(R.id.txtTurns);
         txtItem1 = (TextView) findViewById(R.id.txtItem1);
@@ -111,7 +117,7 @@ public class ActivityGame extends Activity {
             Fragment room = FragmentRoom.newInstance(limbsApp.getRoomTitle(),
                     limbsApp.getRoomDescription(), limbsApp.getRoomUpdate());
             getFragmentManager().beginTransaction()
-                    .setCustomAnimations(animIn, animOut)
+//                    .setCustomAnimations(animIn, animOut)
                     .replace(R.id.container, room)
                     .commit();
         }
@@ -140,28 +146,28 @@ public class ActivityGame extends Activity {
     }
 
     private void updateItems() {
-        if (items.get(0).isFound()) {
+        if (items.get(0).isCollected()) {
             txtItem1.setVisibility(View.GONE);
             txtIcon1.setText(items.get(0).getArt());
         } else {
             txtItem1.setText(items.get(0).getArt());
             txtIcon1.setText("");
         }
-        if (items.get(1).isFound()) {
+        if (items.get(1).isCollected()) {
             txtItem2.setVisibility(View.GONE);
             txtIcon2.setText(items.get(1).getArt());
         } else {
             txtItem2.setText(items.get(1).getArt());
             txtIcon2.setText("");
         }
-        if (items.get(2).isFound()) {
+        if (items.get(2).isCollected()) {
             txtItem3.setVisibility(View.GONE);
             txtIcon3.setText(items.get(2).getArt());
         } else {
             txtItem3.setText(items.get(2).getArt());
             txtIcon3.setText("");
         }
-        if (items.get(3).isFound()) {
+        if (items.get(3).isCollected()) {
             txtItem4.setVisibility(View.GONE);
             txtIcon4.setText(items.get(3).getArt());
         } else {
@@ -171,9 +177,9 @@ public class ActivityGame extends Activity {
     }
 
     private void updateButtons() {
-        btnNorth.setEnabled(limbsApp.canMove(Direction.NORTH));
-        btnEast.setEnabled(limbsApp.canMove(Direction.EAST));
-        btnSouth.setEnabled(limbsApp.canMove(Direction.SOUTH));
-        btnWest.setEnabled(limbsApp.canMove(Direction.WEST));
+//        btnNorth.setEnabled(limbsApp.canMove(Direction.NORTH));
+//        btnEast.setEnabled(limbsApp.canMove(Direction.EAST));
+//        btnSouth.setEnabled(limbsApp.canMove(Direction.SOUTH));
+//        btnWest.setEnabled(limbsApp.canMove(Direction.WEST));
     }
 }

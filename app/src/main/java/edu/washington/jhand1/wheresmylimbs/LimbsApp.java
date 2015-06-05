@@ -20,9 +20,9 @@ public class LimbsApp extends Application {
 
     private static LimbsApp instance = null;
     private MapRepository mapRepo;
-    private List<String> inventory;
-    private int currMove;
-    private int maxMoves;
+    private List<Item> items;
+    private int movesLeft;
+    private boolean allItemsCollected;
     private int currX;
     private int currY;
     private Room currentRoom;
@@ -31,14 +31,26 @@ public class LimbsApp extends Application {
     public LimbsApp() {
         if (instance == null) {
             instance = this;
-            mapRepo = new MapRepository();
-            inventory = new ArrayList<>();
-            board = mapRepo.getBoard();
-            currX = 0;
-            currY = 0;
+            items = new ArrayList<>();
         } else {
             throw new RuntimeException("Ya got too many Limbs Apps!!");
         }
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        Log.d("LimbsApp", "LimbsApp object has been initialized");
+
+        mapRepo = new MapRepository(this);
+
+        items = mapRepo.getObjectiveItems();
+
+        board = mapRepo.getBoard();
+        currX = mapRepo.getStartX();
+        currY = mapRepo.getStartY();
+        currentRoom = board[currX][currY];
+        allItemsCollected = false;
     }
 
     public static LimbsApp getInstance() {
@@ -47,6 +59,18 @@ public class LimbsApp extends Application {
 
     public MapRepository getMapRepository() {
         return mapRepo;
+    }
+
+    // Initial setup called from game activity
+
+    public void setDifficulty(int difficulty) {
+        movesLeft = mapRepo.getMoves(difficulty);
+    }
+
+    // Getters for the game/end activity
+
+    public boolean canMove(Direction direction) {
+        return false;
     }
 
     public void move(Direction direction) {
@@ -67,10 +91,27 @@ public class LimbsApp extends Application {
             }
         }
         currentRoom = board[currX][currY];
+        movesLeft--;
+
+        List<Item> roomItems = currentRoom.getItems();
+        for (int i = 0; i < roomItems.size(); i++) {
+            if (items.contains(roomItems.get(i))) {
+                items.get(i).collect();
+            }
+        }
+
+        // TODO: Add code to check if all items found; if so, flip allItemsCollected boolean
+        boolean checkColl = true;
+        for (int i = 0; i < items.size(); i++) {
+            if (!items.get(i).isCollected()) {
+                checkColl = false;
+            }
+        }
+        allItemsCollected = checkColl;
     }
 
     public int movesLeft() {
-        return maxMoves - currMove;
+        return movesLeft;
     }
 
     public String getRoomTitle() {
@@ -81,22 +122,56 @@ public class LimbsApp extends Application {
         return currentRoom.getDescription();
     }
 
-
-    /*what does this mean?
     public String getRoomUpdate() {
+        // TODO: implement this method:
+//        if (roomcontainsitem) {
+//            store item in variable
+//            remove item from room;
+//            return "You have found " + item.getName();
+//        } else {
+//            return "";
+//        }
 
+        // Stub:
+        return "";
     }
-    */
 
     public boolean allItemsCollected() {
-        return inventory.containsAll(mapRepo.getObjectiveItems());
+        return allItemsCollected;
     }
 
-    public List<String> getItemsCollected() {
-        return inventory;
+    public String getIntro() {
+        return mapRepo.getIntro();
     }
 
+    public String getDeathMessage() {
+        return mapRepo.getDeathMessage();
+    }
 
+    public String getVictoryMessage() {
+        return mapRepo.getVictoryMessage();
+    }
+
+    public String getAdventureTitle() {
+        return mapRepo.getMapTitle();
+    }
+
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void createRepo() {
+        // TODO: implement method for creating a new repo
+        mapRepo = new MapRepository(this);
+
+        items = mapRepo.getObjectiveItems();
+
+        board = mapRepo.getBoard();
+        currX = mapRepo.getStartX();
+        currY = mapRepo.getStartY();
+        currentRoom = board[currX][currY];
+        allItemsCollected = false;
+    }
 
     // Readers and writers
 
@@ -121,6 +196,21 @@ public class LimbsApp extends Application {
             byte[] buffer = new byte[size];
             fis.read(buffer);
             fis.close();
+            json = new String(buffer, "UTF-8");
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return json;
+    }
+
+    public String loadJSON(InputStream is) {
+        String json;
+        try {
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
             json = new String(buffer, "UTF-8");
         } catch (IOException e) {
             e.printStackTrace();

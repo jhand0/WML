@@ -13,23 +13,35 @@ import java.util.List;
  * Created by Jordan on 5/28/2015.
  */
 public class MapRepository {
-    private List<String> objectiveItems;
+    private List<Item> objectiveItems;
     private List<Room> rooms;
-    private int[] turnCounts; //turn counts from easy to hard
+    private int[] moves; // Turn counts from easy to hard
     private int xMax;
     private int yMax;
+    private int startX;
+    private int startY;
     private Room[][] board;
-    private String jsonString;
+    private String mapTitle;
     private String mapIntro;
     private String deathMessage;
     private String victoryMessage;
 
-    public MapRepository() {
+    public MapRepository(LimbsApp limbsApp) {
         objectiveItems = new ArrayList<>();
         rooms = new ArrayList<>();
+
+        InputStream json = null;
+        // Gets json from assets and sends it to MapRepo
+        try {
+            json = limbsApp.getAssets().open(limbsApp.FILENAME);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        parseJSONFromFile(limbsApp.loadJSON(json));
     }
 
-    public List<String> getObjectiveItems() {
+    public List<Item> getObjectiveItems() {
         return objectiveItems;
     }
 
@@ -41,16 +53,6 @@ public class MapRepository {
         return board;
     }
 
-    public void readJSONFile(InputStream inputStream) throws IOException {
-        int size = inputStream.available();
-        byte[] buffer = new byte[size];
-        inputStream.read(buffer);
-        inputStream.close();
-
-        jsonString = new String(buffer, "UTF-8");
-        parseJSONFromFile();
-    }
-
     public int getXMax() {
         return xMax;
     }
@@ -59,8 +61,8 @@ public class MapRepository {
         return yMax;
     }
 
-    public int[] getTurnCounts() {
-        return turnCounts;
+    public int getMoves(int difficulty) {
+        return moves[difficulty];
     }
 
     public String getIntro() {
@@ -75,21 +77,34 @@ public class MapRepository {
         return victoryMessage;
     }
 
+    public String getMapTitle() {
+        return mapTitle;
+    }
 
-    //reads JSON from a file and parses it into usable objects
-    private void parseJSONFromFile() {
+    public int getStartX() {
+        return startX;
+    }
+
+    public int getStartY() {
+        return startY;
+    }
+
+
+    // Reads JSON from a file and parses it into usable objects
+    private void parseJSONFromFile(String json) {
         try {
-            String json = jsonString;
-
             JSONObject adventure = new JSONObject(json);
 
             JSONArray turns = adventure.getJSONArray("turns");
-            this.turnCounts = new int[turns.length()];
+            this.moves = new int[turns.length()];
             for (int i = 0; i < turns.length(); i++) {
-                this.turnCounts[i] = turns.getInt(i);
+                this.moves[i] = turns.getInt(i);
             }
 
-            this.mapIntro = adventure.getString("title");
+            this.startX = Integer.parseInt(adventure.getString("startx"));
+            this.startY = Integer.parseInt(adventure.getString("starty"));
+            this.mapTitle = adventure.getString("title");
+            this.mapIntro = adventure.getString("description");
             this.victoryMessage = adventure.getString("victory_message");
             this.deathMessage = adventure.getString("death_message");
             this.xMax = adventure.getInt("xsize");
@@ -114,10 +129,15 @@ public class MapRepository {
         String title = room.getString("room_title");
         String description = room.getString("room_description");
         Room adventureRoom = new Room(title, description, x, y);
-        JSONArray jsonItems = room.getJSONArray("room_items");
+
+        JSONArray jsonItems = room.getJSONArray("room_item");
         for (int i = 0; i < jsonItems.length(); i++) {
-            adventureRoom.addItem(jsonItems.getString(i));
+            JSONObject jsonItem = jsonItems.getJSONObject(i);
+            String itemName = jsonItem.getString("title");
+            String ascii = jsonItem.getString("ascii");
+            adventureRoom.addItem(new Item(itemName, ascii));
         }
+
         JSONArray jsonDirections = room.getJSONArray("available_directions");
         for (int i = 0; i < jsonDirections.length(); i++) {
             Direction direction = checkDirection(jsonDirections.getString(i));
@@ -130,7 +150,10 @@ public class MapRepository {
     private void parseObjectives(JSONObject adventure) throws JSONException {
         JSONArray jsonObjectives = adventure.getJSONArray("objectives");
         for (int i = 0; i < jsonObjectives.length(); i++) {
-            objectiveItems.add(jsonObjectives.getString(i));
+            JSONObject jsonItem = jsonObjectives.getJSONObject(i);
+            String itemName = jsonItem.getString("title");
+            String ascii = jsonItem.getString("ascii");
+            objectiveItems.add(new Item(itemName, ascii));
         }
     }
 

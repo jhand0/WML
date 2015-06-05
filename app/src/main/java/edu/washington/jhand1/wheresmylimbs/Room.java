@@ -9,12 +9,12 @@ import java.util.List;
 public class Room {
     private String name; //is a name necessary? RoomID better?
     private String description;
-    private List<String> items; //main item to be found in the room (i.e. limb)
+    private List<Item> items; //main item to be found in the room (i.e. limb)
     private int x;
     private int y;
     private List<Direction> availableDirections;
 
-    public Room(String name, String description, List<String> items, int x, int y) {
+    public Room(String name, String description, List<Item> items, int x, int y) {
         this.name = name;
         this.description = description;
         this.items = items;
@@ -24,7 +24,7 @@ public class Room {
     }
 
     public Room(String name, String description, int x, int y) {
-        this(name, description, new ArrayList<String>(), x, y);
+        this(name, description, new ArrayList<Item>(), x, y);
     }
     
     public String getName() {
@@ -35,11 +35,11 @@ public class Room {
         return description;
     }
 
-    public List<String> getItems() {
+    public List<Item> getItems() {
         return items;
     }
 
-    public void addItem(String item) {
+    public void addItem(Item item) {
         items.add(item);
     }
 
