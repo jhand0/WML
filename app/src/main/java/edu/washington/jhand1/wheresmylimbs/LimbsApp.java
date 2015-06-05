@@ -93,16 +93,21 @@ public class LimbsApp extends Application {
         currentRoom = board[currX][currY];
         movesLeft--;
 
-        if (!currentRoom.getItems().isEmpty()) {
-            List<Item> roomItems = currentRoom.getItems();
-            for (int i = 0; i < roomItems.size(); i++) {
-                if (items.contains(roomItems.get(i))) {
-                    items.get(i).collect();
-                }
+        List<Item> roomItems = currentRoom.getItems();
+        for (int i = 0; i < roomItems.size(); i++) {
+            if (items.contains(roomItems.get(i))) {
+                items.get(i).collect();
             }
         }
 
         // TODO: Add code to check if all items found; if so, flip allItemsCollected boolean
+        boolean checkColl = true;
+        for (int i = 0; i < items.size(); i++) {
+            if (!items.get(i).isCollected()) {
+                checkColl = false;
+            }
+        }
+        allItemsCollected = checkColl;
     }
 
     public int movesLeft() {
