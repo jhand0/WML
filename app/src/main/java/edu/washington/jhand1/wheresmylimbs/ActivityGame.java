@@ -112,13 +112,11 @@ public class ActivityGame extends Activity {
             Intent end = new Intent(ActivityGame.this, ActivityEnd.class);
             end.putExtra("win", true);
             startActivity(end);
-            limbsApp.createRepo();
             finish();
         } else if (limbsApp.movesLeft() <= 0) {
             Intent end = new Intent(ActivityGame.this, ActivityEnd.class);
             end.putExtra("win", false);
             startActivity(end);
-            limbsApp.createRepo();
             finish();
         } else {
             txtTurns.setText("" + limbsApp.movesLeft());
