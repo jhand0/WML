@@ -14,12 +14,12 @@
   ],
   "objectives": [
 	{
-	  "title": "Right Arm",
-	  "ascii": "--*"
-	},
-	{
 	  "title": "Left Arm",
 	  "ascii": "*--"
+	},
+	{
+	  "title": "Right Arm",
+	  "ascii": "--*"
 	},
 	{
 	  "title": "Left Leg",
