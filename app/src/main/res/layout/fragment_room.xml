@@ -28,35 +28,38 @@
         android:layout_marginRight="3dp"
         android:layout_marginBottom="3dp" />
 
-    <TextView
-        android:layout_width="fill_parent"
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Room description description description description description  description description description description"
-        android:id="@+id/txtRoomDescription"
         android:layout_gravity="center_horizontal"
-        android:textColor="#ffd5d5d5"
-        android:gravity="center_horizontal"
-        android:padding="5dp"
-        android:typeface="serif"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/border"/>
-
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Room event event event event event event event event event event event event event event event"
-        android:id="@+id/txtRoomUpdate"
-        android:layout_gravity="center_horizontal"
-        android:textColor="#ffd5d5d5"
-        android:gravity="center_horizontal"
         android:background="@drawable/border"
-        android:padding="5dp"
-        android:typeface="serif"
-        android:layout_marginTop="15dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp" />
+        android:layout_marginRight="20dp">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Room description description description description description  description description description description"
+            android:id="@+id/txtRoomDescription"
+            android:textColor="#ffd5d5d5"
+            android:gravity="center_horizontal"
+            android:padding="5dp"
+            android:typeface="serif"
+            android:layout_margin="9dp" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Room event event event event event event event event event event event event event event event"
+            android:id="@+id/txtRoomUpdate"
+            android:textColor="#ffd5d5d5"
+            android:gravity="center_horizontal"
+            android:padding="5dp"
+            android:typeface="serif"
+            android:layout_margin="9dp" />
+    </LinearLayout>
 
 </LinearLayout>
