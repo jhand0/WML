@@ -24,12 +24,13 @@
             android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="0.4"
-            android:gravity="center">
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:id="@+id/">
 
             <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="wrap_content"
+                android:layout_width="90dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/container"
                 android:layout_alignParentLeft="true"
@@ -37,7 +38,7 @@
                 android:background="@drawable/border"
                 android:padding="5dp"
                 android:id="@+id/linearLayout"
-                android:layout_marginBottom="40dp">
+                android:layout_marginBottom="25dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -73,7 +74,7 @@
 
             <FrameLayout
                 android:layout_width="90dp"
-                android:layout_height="130dp"
+                android:layout_height="122dp"
                 android:id="@+id/frameLayout"
                 android:adjustViewBounds="true"
                 android:background="@drawable/border"
@@ -171,19 +172,20 @@
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:gravity="center"
-            android:layout_weight="0.6">
+            android:layout_weight="0.5">
 
             <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="wrap_content"
+                android:layout_width="185dp"
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/linearLayout"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
-                android:padding="5dp"
                 android:background="@drawable/border"
                 android:id="@+id/linearLayout2"
-                android:layout_marginBottom="15dp">
+                android:layout_marginBottom="15dp"
+                android:padding="5dp"
+                android:gravity="center">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -194,7 +196,6 @@
                     android:textStyle="bold"
                     android:typeface="serif"
                     android:textColor="#ffd5d5d5"
-                    android:gravity="right"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true" />
 
@@ -266,7 +267,7 @@
             </LinearLayout>
 
             <GridLayout
-                android:layout_width="wrap_content"
+                android:layout_width="185dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
