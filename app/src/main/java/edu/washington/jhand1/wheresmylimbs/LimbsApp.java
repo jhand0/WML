@@ -157,6 +157,15 @@ public class LimbsApp extends Application {
 
     public void createRepo() {
         // TODO: implement method for creating a new repo
+        mapRepo = new MapRepository(this);
+
+        items = mapRepo.getObjectiveItems();
+
+        board = mapRepo.getBoard();
+        currX = mapRepo.getStartX();
+        currY = mapRepo.getStartY();
+        currentRoom = board[currX][currY];
+        allItemsCollected = false;
     }
 
     // Readers and writers
