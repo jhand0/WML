@@ -5,6 +5,7 @@ package edu.washington.jhand1.wheresmylimbs;
  */
 public class Item {
     private String name;
+    private boolean collected;
 
 
     public Item(String name) {
