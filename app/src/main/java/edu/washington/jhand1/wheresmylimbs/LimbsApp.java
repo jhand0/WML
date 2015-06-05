@@ -45,7 +45,6 @@ public class LimbsApp extends Application {
         mapRepo = new MapRepository(this);
 
         items = mapRepo.getObjectiveItems();
-
         board = mapRepo.getBoard();
         currX = mapRepo.getStartX();
         currY = mapRepo.getStartY();
@@ -103,7 +102,6 @@ public class LimbsApp extends Application {
             }
         }
 
-        // TODO: Add code to check if all items found; if so, flip allItemsCollected boolean
         boolean checkColl = true;
         for (int i = 0; i < items.size(); i++) {
             if (!items.get(i).isCollected()) {
@@ -126,7 +124,6 @@ public class LimbsApp extends Application {
     }
 
     public String getRoomUpdate() {
-        // TODO: implement this method:
         List<Item> roomItems = currentRoom.getItems();
         String update = "";
         if (!roomItems.isEmpty()) {
@@ -168,16 +165,31 @@ public class LimbsApp extends Application {
     }
 
     public void createRepo() {
-        // TODO: implement method for creating a new repo
         mapRepo = new MapRepository(this);
 
         items = mapRepo.getObjectiveItems();
-
         board = mapRepo.getBoard();
         currX = mapRepo.getStartX();
         currY = mapRepo.getStartY();
         currentRoom = board[currX][currY];
         allItemsCollected = false;
+    }
+
+    public boolean createRepo(String json) {
+        try {
+            mapRepo = new MapRepository(json);
+        } catch (IllegalStateException e) {
+            return false;
+        }
+
+        items = mapRepo.getObjectiveItems();
+        board = mapRepo.getBoard();
+        currX = mapRepo.getStartX();
+        currY = mapRepo.getStartY();
+        currentRoom = board[currX][currY];
+        allItemsCollected = false;
+
+        return true;
     }
 
     // Readers and writers
