@@ -43,7 +43,7 @@
 			"available_directions" : [ 
 				"north"
 			]
-		} 
+		},
 		{
 			"xcoordinate": 0,
 			"ycoordinate": 1,
@@ -55,7 +55,7 @@
 			"available_directions" : [ 
 				"east"
 			] 
-		}
+		},
 		{
 			"xcoordinate": 1,
 			"ycoordinate": 1,
@@ -67,7 +67,7 @@
 			"available_directions" : [ 
 				"east"
 			] 
-		}
+		},
 		{
 			"xcoordinate": 2,
 			"ycoordinate": 1,

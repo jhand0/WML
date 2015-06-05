@@ -134,10 +134,12 @@ public class MapRepository {
         String title = room.getString("room_title");
         String description = room.getString("room_description");
         Room adventureRoom = new Room(title, description, x, y);
+        /*
         JSONArray jsonItems = room.getJSONArray("room_items");
         for (int i = 0; i < jsonItems.length(); i++) {
             adventureRoom.addItem(jsonItems.getString(i));
         }
+        */
         JSONArray jsonDirections = room.getJSONArray("available_directions");
         for (int i = 0; i < jsonDirections.length(); i++) {
             Direction direction = checkDirection(jsonDirections.getString(i));
