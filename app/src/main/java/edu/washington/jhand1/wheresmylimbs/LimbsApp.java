@@ -95,8 +95,11 @@ public class LimbsApp extends Application {
 
         List<Item> roomItems = currentRoom.getItems();
         for (int i = 0; i < roomItems.size(); i++) {
-            if (items.contains(roomItems.get(i))) {
-                items.get(i).collect();
+            for (int j = 0; j < items.size(); j++) {
+                if (items.get(j).equals(roomItems.get(i))) {
+                    items.get(j).collect();
+                    break;
+                }
             }
         }
 
