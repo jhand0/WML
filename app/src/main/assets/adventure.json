@@ -22,7 +22,7 @@
 	  "ascii": "*--"
 	},
 	{
-	  "title": "Right Leg",
+	  "title": "Left Leg",
 	  "ascii": "_/"
 	},
 	{
@@ -37,7 +37,10 @@
 	  "room_title": "Castle courtyard",
 	  "room_description": "You are in the castle courtyard",
 	  "room_item": [
-		"Left Arm"
+		{
+	  		"title": "Left Arm",
+	  		"ascii": "*--"
+		}
 	  ],
 	  "available_directions": [
 		"north"
@@ -49,7 +52,10 @@
 	  "room_title": "Room 2",
 	  "room_description": "Ya bitch, Room 2 comin at you",
 	  "room_item": [
-		"Right Arm"
+		{
+	  		"title": "Right Arm",
+	  		"ascii": "--*"
+		}
 	  ],
 	  "available_directions": [
 		"east"
@@ -61,7 +67,10 @@
 	  "room_title": "Room 3",
 	  "room_description": "Getting closer slut",
 	  "room_item": [
-		"Left Leg"
+		{
+	  		"title": "Left Leg",
+	  		"ascii": "_/"
+		}
 	  ],
 	  "available_directions": [
 		"east"
@@ -73,7 +82,10 @@
 	  "room_title": "Room 4",
 	  "room_description": "Last room bitch boy",
 	  "room_item": [
-		"Right Leg"
+		{
+	  		"title": "Right Leg",
+	  		"ascii": "\\_"
+		}
 	  ],
 	  "available_directions": [
 	  ]

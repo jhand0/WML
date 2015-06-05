@@ -13,7 +13,7 @@ import java.util.List;
  * Created by Jordan on 5/28/2015.
  */
 public class MapRepository {
-    private List<String> objectiveItems;
+    private List<Item> objectiveItems;
     private List<Room> rooms;
     private int[] moves; // Turn counts from easy to hard
     private int xMax;
@@ -41,7 +41,7 @@ public class MapRepository {
         parseJSONFromFile(limbsApp.loadJSON(json));
     }
 
-    public List<String> getObjectiveItems() {
+    public List<Item> getObjectiveItems() {
         return objectiveItems;
     }
 
@@ -129,12 +129,15 @@ public class MapRepository {
         String title = room.getString("room_title");
         String description = room.getString("room_description");
         Room adventureRoom = new Room(title, description, x, y);
-        /*
-        JSONArray jsonItems = room.getJSONArray("room_items");
+
+        JSONArray jsonItems = room.getJSONArray("room_item");
         for (int i = 0; i < jsonItems.length(); i++) {
-            adventureRoom.addItem(jsonItems.getString(i));
+            JSONObject jsonItem = jsonItems.getJSONObject(i);
+            String itemName = jsonItem.getString("title");
+            String ascii = jsonItem.getString("ascii");
+            adventureRoom.addItem(new Item(itemName, ascii));
         }
-        */
+
         JSONArray jsonDirections = room.getJSONArray("available_directions");
         for (int i = 0; i < jsonDirections.length(); i++) {
             Direction direction = checkDirection(jsonDirections.getString(i));
@@ -147,7 +150,10 @@ public class MapRepository {
     private void parseObjectives(JSONObject adventure) throws JSONException {
         JSONArray jsonObjectives = adventure.getJSONArray("objectives");
         for (int i = 0; i < jsonObjectives.length(); i++) {
-            objectiveItems.add(jsonObjectives.getString(i));
+            JSONObject jsonItem = jsonObjectives.getJSONObject(i);
+            String itemName = jsonItem.getString("title");
+            String ascii = jsonItem.getString("ascii");
+            objectiveItems.add(new Item(itemName, ascii));
         }
     }
 

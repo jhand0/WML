@@ -44,13 +44,7 @@ public class LimbsApp extends Application {
 
         mapRepo = new MapRepository(this);
 
-        // TODO: Add items to ArrayList here:
-
-        // Stub:
-        items.add(new Item("Left Arm", "*--"));
-        items.add(new Item("Right Arm", "--*"));
-        items.add(new Item("Left Leg", "_/"));
-        items.add(new Item("Right Arm", "\\_"));
+        items = mapRepo.getObjectiveItems();
 
         board = mapRepo.getBoard();
         currX = mapRepo.getStartX();
