@@ -1,5 +1,7 @@
 package edu.washington.jhand1.wheresmylimbs;
 
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -42,7 +44,10 @@ public class MapRepository {
         File jsonFile = new File(LimbsApp.getInstance().getFilesDir().getAbsolutePath(),
                 LimbsApp.FILENAME);
 
-        if (jsonFile.exists()) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(limbsApp);
+        String adventure = preferences.getString("adventure", null);
+
+        if (adventure != null && !adventure.equals("tutorial") && jsonFile.exists()) {
             Log.i(tag, "File found!");
             try {
                 FileInputStream fis = LimbsApp.getInstance().openFileInput(LimbsApp.FILENAME);

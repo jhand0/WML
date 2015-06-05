@@ -5,6 +5,7 @@
         android:title="@string/pref_title_adventure"
         android:entries="@array/pref_adventure_titles"
         android:entryValues="@array/pref_adventure_values"
+        android:defaultValue="tutorial"
         android:negativeButtonText="@null"
         android:positiveButtonText="@null" />
 

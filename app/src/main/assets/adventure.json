@@ -49,8 +49,8 @@
 	{
 	  "xcoordinate": 0,
 	  "ycoordinate": 1,
-	  "room_title": "Room 2",
-	  "room_description": "Room 2",
+	  "room_title": "Kitchen",
+	  "room_description": "You are staring at delicious food, but you're not hungry because you don't have your limbs",
 	  "room_item": [
 		{
 	  		"title": "Right Arm",

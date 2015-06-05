@@ -78,7 +78,7 @@ public class ActivityMain extends Activity {
         String adventure = preferences.getString("adventure", null);
 
         // Download new map
-        if (adventure != null) {
+        if (adventure != null && !adventure.equals("tutorial")) {
             // Register receiver to listen for completed downloads
             Log.i(tag, "Download listener fired up.");
             IntentFilter filter = new IntentFilter();
@@ -146,20 +146,20 @@ public class ActivityMain extends Activity {
                                         limbsApp.writeToFile(json);
                                     }
                                     Log.i(tag, "Download finished.");
-                                    Toast.makeText(ActivityMain.this, "Map downloaded. Restart" +
-                                                    "game to play new level.",
-                                            Toast.LENGTH_LONG).show();
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 } catch (Exception e) {
                                     Log.i(tag, "Map parsing failed.");
-                                    Toast.makeText(ActivityMain.this, "Couldn't parse map.",
+                                    Toast.makeText(ActivityMain.this, "We forgot where we" +
+                                                    "put your limbs. Please choose a different" +
+                                                    "map.",
                                             Toast.LENGTH_LONG).show();
                                 }
                                 break;
                             case DownloadManager.STATUS_FAILED:
                                 Log.i(tag, "Download failed.");
-                                Toast.makeText(ActivityMain.this, "Couldn't download map.",
+                                Toast.makeText(ActivityMain.this, "Couldn't download the map. " +
+                                                "Please refresh to try again.",
                                         Toast.LENGTH_LONG).show();
                                 break;
                         }

@@ -43,13 +43,7 @@ public class LimbsApp extends Application {
         Log.d("LimbsApp", "LimbsApp object has been initialized");
 
         mapRepo = new MapRepository(this);
-
-        items = mapRepo.getObjectiveItems();
-        board = mapRepo.getBoard();
-        currX = mapRepo.getStartX();
-        currY = mapRepo.getStartY();
-        currentRoom = board[currX][currY];
-        allItemsCollected = false;
+        setup();
     }
 
     public static LimbsApp getInstance() {
@@ -166,13 +160,7 @@ public class LimbsApp extends Application {
 
     public void createRepo() {
         mapRepo = new MapRepository(this);
-
-        items = mapRepo.getObjectiveItems();
-        board = mapRepo.getBoard();
-        currX = mapRepo.getStartX();
-        currY = mapRepo.getStartY();
-        currentRoom = board[currX][currY];
-        allItemsCollected = false;
+        setup();
     }
 
     public boolean createRepo(String json) {
@@ -182,14 +170,28 @@ public class LimbsApp extends Application {
             return false;
         }
 
+        setup();
+        return true;
+    }
+
+    private void setup() {
         items = mapRepo.getObjectiveItems();
         board = mapRepo.getBoard();
         currX = mapRepo.getStartX();
         currY = mapRepo.getStartY();
         currentRoom = board[currX][currY];
-        allItemsCollected = false;
 
-        return true;
+        List<Item> roomItems = currentRoom.getItems();
+        for (int i = 0; i < roomItems.size(); i++) {
+            for (int j = 0; j < items.size(); j++) {
+                if (items.get(j).equals(roomItems.get(i))) {
+                    items.get(j).collect();
+                    break;
+                }
+            }
+        }
+
+        allItemsCollected = false;
     }
 
     // Readers and writers
