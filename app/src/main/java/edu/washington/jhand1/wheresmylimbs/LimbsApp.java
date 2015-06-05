@@ -127,16 +127,17 @@ public class LimbsApp extends Application {
 
     public String getRoomUpdate() {
         // TODO: implement this method:
-//        if (roomcontainsitem) {
-//            store item in variable
-//            remove item from room;
-//            return "You have found " + item.getName();
-//        } else {
-//            return "";
-//        }
-
-        // Stub:
-        return "";
+        List<Item> roomItems = currentRoom.getItems();
+        String update = "";
+        if (!roomItems.isEmpty()) {
+            update += "You have found " + items.get(0);
+            for (int i = 1; i < roomItems.size(); i++) {
+                Item item = roomItems.get(i);
+                roomItems.remove(i);
+                update += ", " + item.getName();
+            }
+        }
+        return update;
     }
 
     public boolean allItemsCollected() {

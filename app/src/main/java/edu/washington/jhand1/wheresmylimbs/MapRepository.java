@@ -1,9 +1,14 @@
 package edu.washington.jhand1.wheresmylimbs;
 
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -33,9 +38,15 @@ public class MapRepository {
         InputStream json = null;
         // Gets json from assets and sends it to MapRepo
         try {
-            json = limbsApp.getAssets().open(limbsApp.FILENAME);
-        } catch (IOException e) {
-            e.printStackTrace();
+            //File jsonFile = new File(LimbsApp.getInstance().getFilesDir().getAbsolutePath(), "/data.json");
+            FileInputStream fis = LimbsApp.getInstance().openFileInput("data.json");
+            json = fis;
+        } catch (FileNotFoundException sad) {
+            try {
+                json = limbsApp.getAssets().open(LimbsApp.FILENAME);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
         parseJSONFromFile(limbsApp.loadJSON(json));
