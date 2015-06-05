@@ -25,13 +25,14 @@ public class ActivityMain extends Activity {
     public static final String tag = "LimbsApp/ActivityMain";
     private DownloadManager dm;
     private int difficulty;
+    LimbsApp limbsApp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        LimbsApp limbsApp = (LimbsApp) getApplication();
+        limbsApp = (LimbsApp) getApplication();
 
         PreferenceManager.setDefaultValues(this, R.xml.pref_settings, false);
 
@@ -66,7 +67,7 @@ public class ActivityMain extends Activity {
     protected void onResume() {
         super.onResume();
 
-        getApplication().createRepo();
+        limbsApp.createRepo();
 
 //        // Start download for new map
 //        Intent downloadMap = new Intent(ActivityMain.this, DownloadService.class);
