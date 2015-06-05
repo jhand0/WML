@@ -3,7 +3,7 @@
     android:layout_height="match_parent"
     tools:context="edu.washington.jhand1.wheresmylimbs.ActivityGame"
     android:background="#292930"
-    android:id="@+id/">
+    >
 
     <!-- Fragment container -->
     <FrameLayout
