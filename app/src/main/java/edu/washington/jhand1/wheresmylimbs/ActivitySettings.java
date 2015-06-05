@@ -28,7 +28,7 @@ public class ActivitySettings extends PreferenceActivity {
         // Bind the summaries preferences to their values. When their
         // values change, their summaries are updated to reflect the
         // new value, per the Android Design guidelines.
-        bindPreferenceSummaryToValue(findPreference("map"));
+        bindPreferenceSummaryToValue(findPreference("adventure"));
         bindPreferenceSummaryToValue(findPreference("difficulty"));
     }
 
@@ -52,7 +52,6 @@ public class ActivitySettings extends PreferenceActivity {
                         index >= 0
                                 ? listPreference.getEntries()[index]
                                 : null);
-
             } else {
                 // For all other preferences, set the summary to the value's
                 // simple string representation.

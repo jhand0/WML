@@ -32,6 +32,7 @@ public class ActivityMain extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         //gets json from assets and sends it to MapRepo
         try {
             InputStream json = getAssets().open("adventure.json");
@@ -40,11 +41,14 @@ public class ActivityMain extends Activity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        LimbsApp limbsApp = (LimbsApp) getApplication();
         PreferenceManager.setDefaultValues(this, R.xml.pref_settings, false);
 
         Button btnPlay = (Button) findViewById(R.id.btnPlay);
         Button btnSettings = (Button) findViewById(R.id.btnSettings);
 
+        btnPlay.setText(limbsApp.getAdventureTitle());
         btnPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
