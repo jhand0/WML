@@ -137,6 +137,8 @@ public class LimbsApp extends Application {
                 roomItems.remove(i);
                 update += ", " + item.getName();
             }
+        } else {
+            update = "This room is empty";
         }
         return update;
     }
