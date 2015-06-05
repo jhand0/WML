@@ -36,4 +36,8 @@ public class Item {
             return false;
         return this.name.equals(((Item) obj).name);
     }
+
+    public String toString() {
+        return getName();
+    }
 }

@@ -131,6 +131,7 @@ public class LimbsApp extends Application {
         String update = "";
         if (!roomItems.isEmpty()) {
             update += "You have found " + items.get(0);
+            roomItems.remove(0);
             for (int i = 1; i < roomItems.size(); i++) {
                 Item item = roomItems.get(i);
                 roomItems.remove(i);
