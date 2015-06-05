@@ -40,7 +40,8 @@
         android:padding="5dp"
         android:typeface="serif"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp" />
+        android:layout_marginRight="20dp"
+        android:background="@drawable/border"/>
 
     <TextView
         android:layout_width="fill_parent"
@@ -54,7 +55,7 @@
         android:background="@drawable/border"
         android:padding="5dp"
         android:typeface="serif"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="15dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp" />
 
