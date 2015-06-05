@@ -11,8 +11,8 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.ParcelFileDescriptor;
-import android.preference.PreferenceManager;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -34,9 +34,7 @@ public class ActivityMain extends Activity {
         setContentView(R.layout.activity_main);
 
         LimbsApp limbsApp = (LimbsApp) getApplication();
-
-        //PreferenceManager.setDefaultValues(this, R.xml.pref_settings, false);
-
+        
         Button btnPlay = (Button) findViewById(R.id.btnPlay);
         Button btnSettings = (Button) findViewById(R.id.btnSettings);
 
@@ -65,17 +63,17 @@ public class ActivityMain extends Activity {
 //        registerReceiver(receiver, filter);
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        difficulty = Integer.parseInt(preferences.getString("difficulty", null));
-
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//
+//        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+//        difficulty = Integer.parseInt(preferences.getString("difficulty", null));
+//
 //        // Start download for new map
 //        Intent downloadMap = new Intent(ActivityMain.this, DownloadService.class);
 //        startService(downloadMap);
-    }
+//    }
 
     // This is your receiver that you registered in the onCreate that will receive any messages
     // that match a download-complete like broadcast
