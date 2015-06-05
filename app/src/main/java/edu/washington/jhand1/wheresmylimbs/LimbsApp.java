@@ -49,6 +49,7 @@ public class LimbsApp extends Application {
         board = mapRepo.getBoard();
         currX = mapRepo.getStartX();
         currY = mapRepo.getStartY();
+        currentRoom = board[currX][currY];
         allItemsCollected = false;
     }
 
@@ -92,7 +93,14 @@ public class LimbsApp extends Application {
         currentRoom = board[currX][currY];
         movesLeft--;
 
-        // TODO: Add code for finding item; if found, flip collected boolean
+        if (!currentRoom.getItems().isEmpty()) {
+            List<Item> roomItems = currentRoom.getItems();
+            for (int i = 0; i < roomItems.size(); i++) {
+                if (items.contains(roomItems.get(i))) {
+                    items.get(i).collect();
+                }
+            }
+        }
 
         // TODO: Add code to check if all items found; if so, flip allItemsCollected boolean
     }

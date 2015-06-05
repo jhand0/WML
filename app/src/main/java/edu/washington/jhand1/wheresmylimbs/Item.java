@@ -18,6 +18,10 @@ public class Item {
         return collected;
     }
 
+    public void collect() {
+        collected = true;
+    }
+
     public String getArt() {
         return art;
     }
