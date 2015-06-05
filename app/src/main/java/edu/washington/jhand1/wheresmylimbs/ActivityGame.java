@@ -100,6 +100,13 @@ public class ActivityGame extends Activity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        limbsApp.createRepo();
+    }
+
     private void update() {
         if (limbsApp.allItemsCollected()) {
             Intent end = new Intent(ActivityGame.this, ActivityEnd.class);
@@ -107,7 +114,7 @@ public class ActivityGame extends Activity {
             startActivity(end);
             limbsApp.createRepo();
             finish();
-        } else if (limbsApp.movesLeft() < 0) {
+        } else if (limbsApp.movesLeft() <= 0) {
             Intent end = new Intent(ActivityGame.this, ActivityEnd.class);
             end.putExtra("win", false);
             startActivity(end);
