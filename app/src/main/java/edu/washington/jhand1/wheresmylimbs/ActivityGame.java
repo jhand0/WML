@@ -31,6 +31,9 @@ public class ActivityGame extends Activity {
     Button btnEast;
     Button btnSouth;
     Button btnWest;
+    Button btnContinue;
+    View grdDpad;
+    boolean win;
 
     // Custom fragment animations
     int animIn = 0;
@@ -60,7 +63,11 @@ public class ActivityGame extends Activity {
         btnEast = (Button) findViewById(R.id.btnEast);
         btnSouth = (Button) findViewById(R.id.btnSouth);
         btnWest = (Button) findViewById(R.id.btnWest);
+        btnContinue = (Button) findViewById(R.id.btnContinue);
+        grdDpad = findViewById(R.id.grdDpad);
 
+        grdDpad.setVisibility(View.VISIBLE);
+        btnContinue.setVisibility(View.GONE);
         update();
 
         btnNorth.setOnClickListener(new View.OnClickListener() {
@@ -98,6 +105,16 @@ public class ActivityGame extends Activity {
                 update();
             }
         });
+
+        btnContinue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent end = new Intent(ActivityGame.this, ActivityEnd.class);
+                end.putExtra("win", win);
+                startActivity(end);
+                finish();
+            }
+        });
     }
 
     @Override
@@ -109,26 +126,19 @@ public class ActivityGame extends Activity {
 
     private void update() {
         if (limbsApp.allItemsCollected()) {
-            Intent end = new Intent(ActivityGame.this, ActivityEnd.class);
-            end.putExtra("win", true);
-            startActivity(end);
-            finish();
+            win = true;
         } else if (limbsApp.movesLeft() <= 0) {
-            Intent end = new Intent(ActivityGame.this, ActivityEnd.class);
-            end.putExtra("win", false);
-            startActivity(end);
-            finish();
-        } else {
-            txtTurns.setText("" + limbsApp.movesLeft());
-            updateItems();
-            updateButtons();
-            Fragment room = FragmentRoom.newInstance(limbsApp.getRoomTitle(),
-                    limbsApp.getRoomDescription(), limbsApp.getRoomUpdate());
-            getFragmentManager().beginTransaction()
-                    .setCustomAnimations(animIn, animOut)
-                    .replace(R.id.container, room)
-                    .commit();
+            win = false;
         }
+        txtTurns.setText("" + limbsApp.movesLeft());
+        updateItems();
+        updateButtons();
+        Fragment room = FragmentRoom.newInstance(limbsApp.getRoomTitle(),
+                limbsApp.getRoomDescription(), limbsApp.getRoomUpdate());
+        getFragmentManager().beginTransaction()
+                .setCustomAnimations(animIn, animOut)
+                .replace(R.id.container, room)
+                .commit();
     }
 
     // Set animations for fragment transition
@@ -185,37 +195,45 @@ public class ActivityGame extends Activity {
     }
 
     private void updateButtons() {
-        btnNorth.setEnabled(limbsApp.canMove(Direction.NORTH));
-        if (limbsApp.canMove(Direction.NORTH)) {
-            btnNorth.setTextColor(getResources().getColor(R.color.btnTextEnable));
-            btnNorth.setBackgroundColor(getResources().getColor(R.color.btnBackgroundEnable));
+        if (limbsApp.movesLeft() <= 0 || limbsApp.allItemsCollected()) {
+            grdDpad.setVisibility(View.GONE);
+            btnContinue.setVisibility(View.VISIBLE);
+            if (!limbsApp.allItemsCollected()) {
+                txtTurns.setTextColor(Color.RED);
+            }
         } else {
-            btnNorth.setTextColor(getResources().getColor(R.color.btnTextDisable));
-            btnNorth.setBackgroundColor(getResources().getColor(R.color.btnBackgroundDisable));
-        }
-        btnEast.setEnabled(limbsApp.canMove(Direction.EAST));
-        if (limbsApp.canMove(Direction.EAST)) {
-            btnEast.setTextColor(getResources().getColor(R.color.btnTextEnable));
-            btnEast.setBackgroundColor(getResources().getColor(R.color.btnBackgroundEnable));
-        } else {
-            btnEast.setTextColor(getResources().getColor(R.color.btnTextDisable));
-            btnEast.setBackgroundColor(getResources().getColor(R.color.btnBackgroundDisable));
-        }
-        btnSouth.setEnabled(limbsApp.canMove(Direction.SOUTH));
-        if (limbsApp.canMove(Direction.SOUTH)) {
-            btnSouth.setTextColor(getResources().getColor(R.color.btnTextEnable));
-            btnSouth.setBackgroundColor(getResources().getColor(R.color.btnBackgroundEnable));
-        } else {
-            btnSouth.setTextColor(getResources().getColor(R.color.btnTextDisable));
-            btnSouth.setBackgroundColor(getResources().getColor(R.color.btnBackgroundDisable));
-        }
-        btnWest.setEnabled(limbsApp.canMove(Direction.WEST));
-        if (limbsApp.canMove(Direction.WEST)) {
-            btnWest.setTextColor(getResources().getColor(R.color.btnTextEnable));
-            btnWest.setBackgroundColor(getResources().getColor(R.color.btnBackgroundEnable));
-        } else {
-            btnWest.setTextColor(getResources().getColor(R.color.btnTextDisable));
-            btnWest.setBackgroundColor(getResources().getColor(R.color.btnBackgroundDisable));
+            btnNorth.setEnabled(limbsApp.canMove(Direction.NORTH));
+            if (limbsApp.canMove(Direction.NORTH)) {
+                btnNorth.setTextColor(getResources().getColor(R.color.btnTextEnable));
+                btnNorth.setBackgroundColor(getResources().getColor(R.color.btnBackgroundEnable));
+            } else {
+                btnNorth.setTextColor(getResources().getColor(R.color.btnTextDisable));
+                btnNorth.setBackgroundColor(getResources().getColor(R.color.btnBackgroundDisable));
+            }
+            btnEast.setEnabled(limbsApp.canMove(Direction.EAST));
+            if (limbsApp.canMove(Direction.EAST)) {
+                btnEast.setTextColor(getResources().getColor(R.color.btnTextEnable));
+                btnEast.setBackgroundColor(getResources().getColor(R.color.btnBackgroundEnable));
+            } else {
+                btnEast.setTextColor(getResources().getColor(R.color.btnTextDisable));
+                btnEast.setBackgroundColor(getResources().getColor(R.color.btnBackgroundDisable));
+            }
+            btnSouth.setEnabled(limbsApp.canMove(Direction.SOUTH));
+            if (limbsApp.canMove(Direction.SOUTH)) {
+                btnSouth.setTextColor(getResources().getColor(R.color.btnTextEnable));
+                btnSouth.setBackgroundColor(getResources().getColor(R.color.btnBackgroundEnable));
+            } else {
+                btnSouth.setTextColor(getResources().getColor(R.color.btnTextDisable));
+                btnSouth.setBackgroundColor(getResources().getColor(R.color.btnBackgroundDisable));
+            }
+            btnWest.setEnabled(limbsApp.canMove(Direction.WEST));
+            if (limbsApp.canMove(Direction.WEST)) {
+                btnWest.setTextColor(getResources().getColor(R.color.btnTextEnable));
+                btnWest.setBackgroundColor(getResources().getColor(R.color.btnBackgroundEnable));
+            } else {
+                btnWest.setTextColor(getResources().getColor(R.color.btnTextDisable));
+                btnWest.setBackgroundColor(getResources().getColor(R.color.btnBackgroundDisable));
+            }
         }
     }
 }
