@@ -15,18 +15,33 @@ import java.util.List;
 public class MapRepository {
     private List<String> objectiveItems;
     private List<Room> rooms;
-    private int[] turnCounts; //turn counts from easy to hard
+    private int[] moves; // Turn counts from easy to hard
     private int xMax;
     private int yMax;
+    private int startX;
+    private int startY;
     private Room[][] board;
     private String jsonString;
+    private String mapTitle;
     private String mapIntro;
     private String deathMessage;
     private String victoryMessage;
 
-    public MapRepository() {
+    public MapRepository(LimbsApp limbsApp) {
         objectiveItems = new ArrayList<>();
         rooms = new ArrayList<>();
+
+        InputStream json = null;
+        // Gets json from assets and sends it to MapRepo
+        try {
+            json = limbsApp.getAssets().open("adventure.json");
+            limbsApp.loadJSON(json);
+            json.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        jsonString = limbsApp.loadJSON(json);
     }
 
     public List<String> getObjectiveItems() {
@@ -41,16 +56,6 @@ public class MapRepository {
         return board;
     }
 
-    public void readJSONFile(InputStream inputStream) throws IOException {
-        int size = inputStream.available();
-        byte[] buffer = new byte[size];
-        inputStream.read(buffer);
-        inputStream.close();
-
-        jsonString = new String(buffer, "UTF-8");
-        parseJSONFromFile();
-    }
-
     public int getXMax() {
         return xMax;
     }
@@ -59,8 +64,8 @@ public class MapRepository {
         return yMax;
     }
 
-    public int[] getTurnCounts() {
-        return turnCounts;
+    public int getMoves(int difficulty) {
+        return moves[difficulty];
     }
 
     public String getIntro() {
@@ -75,8 +80,20 @@ public class MapRepository {
         return victoryMessage;
     }
 
+    public String getMapTitle() {
+        return mapTitle;
+    }
 
-    //reads JSON from a file and parses it into usable objects
+    public int getStartX() {
+        return startX;
+    }
+
+    public int getStartY() {
+        return startY;
+    }
+
+
+    // Reads JSON from a file and parses it into usable objects
     private void parseJSONFromFile() {
         try {
             String json = jsonString;
@@ -84,12 +101,15 @@ public class MapRepository {
             JSONObject adventure = new JSONObject(json);
 
             JSONArray turns = adventure.getJSONArray("turns");
-            this.turnCounts = new int[turns.length()];
+            this.moves = new int[turns.length()];
             for (int i = 0; i < turns.length(); i++) {
-                this.turnCounts[i] = turns.getInt(i);
+                this.moves[i] = turns.getInt(i);
             }
 
-            this.mapIntro = adventure.getString("title");
+            this.startX = Integer.parseInt(adventure.getString("startx"));
+            this.startY = Integer.parseInt(adventure.getString("starty"));
+            this.mapTitle = adventure.getString("title");
+            this.mapIntro = adventure.getString("description");
             this.victoryMessage = adventure.getString("victory_message");
             this.deathMessage = adventure.getString("death_message");
             this.xMax = adventure.getInt("xsize");

@@ -5,11 +5,21 @@ package edu.washington.jhand1.wheresmylimbs;
  */
 public class Item {
     private String name;
+    private String art;
     private boolean collected;
 
-
-    public Item(String name) {
+    public Item(String name, String art) {
         this.name = name;
+        this.art = art;
+        collected = false;
+    }
+
+    public boolean isCollected() {
+        return collected;
+    }
+
+    public String getArt() {
+        return art;
     }
 
     public String getName() {
@@ -20,6 +30,6 @@ public class Item {
     public boolean equals(Object obj) {
         if (!(obj instanceof Item))
             return false;
-        return obj == this || (this.name.equals(((Item) obj).name));
+        return this.name.equals(((Item) obj).name);
     }
 }

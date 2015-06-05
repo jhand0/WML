@@ -33,15 +33,6 @@ public class ActivityMain extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //gets json from assets and sends it to MapRepo
-        try {
-            InputStream json = getAssets().open("adventure.json");
-            LimbsApp.getInstance().getMapRepository().readJSONFile(json);
-            json.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
         LimbsApp limbsApp = (LimbsApp) getApplication();
         PreferenceManager.setDefaultValues(this, R.xml.pref_settings, false);
 
@@ -67,10 +58,10 @@ public class ActivityMain extends Activity {
         });
 
         // Register receiver to listen for completed downloads
-        dm = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
-        IntentFilter filter = new IntentFilter();
-        filter.addAction(DownloadManager.ACTION_DOWNLOAD_COMPLETE);
-        registerReceiver(receiver, filter);
+//        dm = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
+//        IntentFilter filter = new IntentFilter();
+//        filter.addAction(DownloadManager.ACTION_DOWNLOAD_COMPLETE);
+//        registerReceiver(receiver, filter);
     }
 
     @Override
@@ -80,9 +71,9 @@ public class ActivityMain extends Activity {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         difficulty = Integer.parseInt(preferences.getString("difficulty", null));
 
-        // Start download for new map
-        Intent downloadMap = new Intent(ActivityMain.this, DownloadService.class);
-        startService(downloadMap);
+//        // Start download for new map
+//        Intent downloadMap = new Intent(ActivityMain.this, DownloadService.class);
+//        startService(downloadMap);
     }
 
     // This is your receiver that you registered in the onCreate that will receive any messages

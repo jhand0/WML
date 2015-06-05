@@ -22,7 +22,7 @@ public class ActivityEnd extends Activity {
         TextView txtWinLose = (TextView) findViewById(R.id.txtWinLose);
         TextView txtMessage = (TextView) findViewById(R.id.txtMessage);
         Button btnRestart = (Button) findViewById(R.id.btnRestart);
-        Button btnMainMenu = (Button) findViewById(R.id.btnMainMenu);
+        Button btnMainMenu = (Button) findViewById(R.id.btnMenu);
 
         if (win) {
             txtImage.setText(":)");

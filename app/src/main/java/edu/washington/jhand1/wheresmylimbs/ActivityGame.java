@@ -40,6 +40,8 @@ public class ActivityGame extends Activity {
 
         limbsApp = (LimbsApp) getApplication();
 
+        limbsApp.setDifficulty(getIntent().getIntExtra("difficulty", 0));
+
         txtTurns = (TextView) findViewById(R.id.txtTurns);
         txtItem1 = (TextView) findViewById(R.id.txtItem1);
         txtItem2 = (TextView) findViewById(R.id.txtItem2);
@@ -140,28 +142,28 @@ public class ActivityGame extends Activity {
     }
 
     private void updateItems() {
-        if (items.get(0).isFound()) {
+        if (items.get(0).isCollected()) {
             txtItem1.setVisibility(View.GONE);
             txtIcon1.setText(items.get(0).getArt());
         } else {
             txtItem1.setText(items.get(0).getArt());
             txtIcon1.setText("");
         }
-        if (items.get(1).isFound()) {
+        if (items.get(1).isCollected()) {
             txtItem2.setVisibility(View.GONE);
             txtIcon2.setText(items.get(1).getArt());
         } else {
             txtItem2.setText(items.get(1).getArt());
             txtIcon2.setText("");
         }
-        if (items.get(2).isFound()) {
+        if (items.get(2).isCollected()) {
             txtItem3.setVisibility(View.GONE);
             txtIcon3.setText(items.get(2).getArt());
         } else {
             txtItem3.setText(items.get(2).getArt());
             txtIcon3.setText("");
         }
-        if (items.get(3).isFound()) {
+        if (items.get(3).isCollected()) {
             txtItem4.setVisibility(View.GONE);
             txtIcon4.setText(items.get(3).getArt());
         } else {
