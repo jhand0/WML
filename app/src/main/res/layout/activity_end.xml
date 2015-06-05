@@ -22,7 +22,8 @@
         android:textColor="#ffffffff"
         android:textSize="50dp"
         android:typeface="serif"
-        android:gravity="center_horizontal" />
+        android:gravity="center_horizontal"
+        android:layout_marginTop="20dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -38,7 +39,8 @@
         android:gravity="center_horizontal"
         android:textColor="#ffd5d5d5"
 
-        android:typeface="serif" />
+        android:typeface="serif"
+        android:layout_marginTop="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -55,7 +57,8 @@
         android:textSize="200dp"
         android:textColor="#fffeffff"
         android:textStyle="bold"
-        android:gravity="center_horizontal" />
+        android:gravity="center_horizontal"
+        android:layout_marginTop="10dp" />
 
     <Button
         style="@android:style/MediaButton.Play"
@@ -64,10 +67,14 @@
         android:text="RESTART"
         android:id="@+id/btnRestart"
         android:textColor="#ffd5d5d5"
-        android:layout_alignParentBottom="true"
+        android:background="#ff636275"
+        android:textSize="20dp"
+        android:padding="6dp"
+        android:typeface="serif"
+        android:layout_alignTop="@+id/btnMenu"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:background="#ff636275"/>
+        android:layout_marginBottom="20dp" />
 
     <Button
         style="@android:style/MediaButton.Play"
@@ -76,9 +83,13 @@
         android:text="MENU"
         android:id="@+id/btnMenu"
         android:textColor="#ffd5d5d5"
-        android:layout_alignBottom="@+id/btnRestart"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:background="#ff636275"/>
+        android:background="#ff636275"
+        android:textSize="20dp"
+        android:typeface="serif"
+        android:padding="6dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/txtImage"
+        android:layout_alignEnd="@+id/txtImage"
+        android:layout_marginBottom="20dp" />
 
 </RelativeLayout>
