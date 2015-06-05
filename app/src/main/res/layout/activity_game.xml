@@ -230,8 +230,8 @@
         android:id="@+id/btnNorth"
         android:gravity="center|center_horizontal|fill_vertical"
         android:textSize="40dp"
-        android:background="#ff636275"
-        android:textColor="#ffd5d5d5"
+        android:background="#ff4d4c5b"
+        android:textColor="#ffababab"
         android:layout_marginBottom="4dp"
         android:layout_above="@+id/btnEast"
         android:layout_alignRight="@+id/btnSouth" />
