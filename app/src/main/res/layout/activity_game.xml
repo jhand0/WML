@@ -192,7 +192,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="ITEMS REMAINING"
+                    android:text="YET TO BE FOUND"
                     android:id="@+id/textView2"
                     android:textStyle="bold"
                     android:typeface="serif"
