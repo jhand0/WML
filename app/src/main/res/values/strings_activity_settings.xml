@@ -24,4 +24,9 @@
         <item>1</item>
         <item>2</item>
     </string-array>
+
+    <string name="pref_title_music">Disable Music</string>
+
+    <string name="pref_title_sfx">Disable Sound Effects</string>
+
 </resources>

@@ -38,6 +38,8 @@ public class ActivityGame extends Activity {
     Button btnContinue;
     View grdDpad;
     boolean win;
+    boolean music;
+    boolean sfx;
 
     // Custom fragment animations
     int animIn = 0;
@@ -50,16 +52,23 @@ public class ActivityGame extends Activity {
 
         limbsApp = (LimbsApp) getApplication();
 
-        mpTrack = MediaPlayer.create(getApplicationContext(), R.raw.bittrack);
-        mpTrack.setLooping(true);
-        mpTrack.start();
-
-        mpBite = MediaPlayer.create(getApplicationContext(), R.raw.mylimbs);
-        mpBite.start();
-
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         limbsApp.setDifficulty(Integer.parseInt(preferences.getString("difficulty", null)));
         items = limbsApp.getItems();
+
+        music = preferences.getBoolean("music", false);
+        sfx = preferences.getBoolean("sfx", false);
+
+        if (music) {
+            mpTrack = MediaPlayer.create(getApplicationContext(), R.raw.bittrack);
+            mpTrack.setLooping(true);
+            mpTrack.start();
+        }
+
+        if (sfx) {
+            mpBite = MediaPlayer.create(getApplicationContext(), R.raw.mylimbs);
+            mpBite.start();
+        }
 
         txtTurns = (TextView) findViewById(R.id.txtTurns);
         txtItem1 = (TextView) findViewById(R.id.txtItem1);
@@ -131,30 +140,40 @@ public class ActivityGame extends Activity {
     @Override
     public void onResume() {
         super.onResume();
-        mpTrack.start();
+        if (music) {
+            mpTrack.start();
+        }
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        mpTrack.pause();
+        if (music) {
+            mpTrack.pause();
+        }
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        mpTrack.stop();
-        mpTrack.release();
-        mpBite.stop();
-        mpBite.release();
+        if (music) {
+            mpTrack.stop();
+            mpTrack.release();
+        }
+        if (sfx) {
+            mpBite.stop();
+            mpBite.release();
+        }
         limbsApp.createRepo();
     }
 
     private void update() {
-        mpBite.stop();
-        mpBite.release();
-        mpBite = MediaPlayer.create(getApplicationContext(), R.raw.mylimbs);
-        mpBite.start();
+        if (sfx) {
+            mpBite.stop();
+            mpBite.release();
+            mpBite = MediaPlayer.create(getApplicationContext(), R.raw.mylimbs);
+            mpBite.start();
+        }
 
         if (limbsApp.allItemsCollected()) {
             win = true;
