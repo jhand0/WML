@@ -12,12 +12,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.io.IOException;
 import java.util.List;
 
 public class ActivityGame extends Activity {
 
     LimbsApp limbsApp;
-    MediaPlayer mp;
+    MediaPlayer mpTrack;
+    MediaPlayer mpBite;
     List<Item> items;
 
     TextView txtTurns;
@@ -48,8 +50,12 @@ public class ActivityGame extends Activity {
 
         limbsApp = (LimbsApp) getApplication();
 
-        mp = MediaPlayer.create(getApplicationContext(), R.raw.bittrack);
-        mp.start();
+        mpTrack = MediaPlayer.create(getApplicationContext(), R.raw.bittrack);
+        mpTrack.setLooping(true);
+        mpTrack.start();
+
+        mpBite = MediaPlayer.create(getApplicationContext(), R.raw.mylimbs);
+        mpBite.start();
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         limbsApp.setDifficulty(Integer.parseInt(preferences.getString("difficulty", null)));
@@ -117,7 +123,6 @@ public class ActivityGame extends Activity {
                 Intent end = new Intent(ActivityGame.this, ActivityEnd.class);
                 end.putExtra("win", win);
                 startActivity(end);
-                mp.stop();
                 finish();
             }
         });
@@ -126,32 +131,37 @@ public class ActivityGame extends Activity {
     @Override
     public void onResume() {
         super.onResume();
-        mp.start();
+        mpTrack.start();
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        mp.pause();
+        mpTrack.pause();
     }
 
     @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        mp.stop();
+    public void onDestroy() {
+        super.onDestroy();
+        mpTrack.stop();
+        mpTrack.release();
+        mpBite.stop();
+        mpBite.release();
         limbsApp.createRepo();
     }
 
     private void update() {
-        // Play soundbite
-        MediaPlayer mp2 = MediaPlayer.create(getApplicationContext(), R.raw.mylimbs);
-        mp2.start();
+        mpBite.stop();
+        mpBite.release();
+        mpBite = MediaPlayer.create(getApplicationContext(), R.raw.mylimbs);
+        mpBite.start();
 
         if (limbsApp.allItemsCollected()) {
             win = true;
         } else if (limbsApp.movesLeft() <= 0) {
             win = false;
         }
+
         txtTurns.setText("" + limbsApp.movesLeft());
         updateItems();
         updateButtons();
