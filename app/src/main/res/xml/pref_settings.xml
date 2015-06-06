@@ -21,11 +21,11 @@
     <CheckBoxPreference
         android:key="music"
         android:title="@string/pref_title_music"
-        android:defaultValue="true" />
+        android:defaultValue="false" />
 
     <CheckBoxPreference
         android:key="sfx"
         android:title="@string/pref_title_sfx"
-        android:defaultValue="true" />
+        android:defaultValue="false" />
 
 </PreferenceScreen>

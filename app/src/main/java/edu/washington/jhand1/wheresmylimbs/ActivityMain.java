@@ -158,17 +158,17 @@ public class ActivityMain extends Activity {
                                     e.printStackTrace();
                                 } catch (Exception e) {
                                     Log.i(tag, "Map parsing failed.");
-                                    Toast.makeText(ActivityMain.this, "We forgot where we" +
+                                    Toast.makeText(ActivityMain.this, "We forgot where we " +
                                                     "put your limbs. Please choose a different" +
                                                     "map.",
-                                            Toast.LENGTH_LONG).show();
+                                            Toast.LENGTH_SHORT).show();
                                 }
                                 break;
                             case DownloadManager.STATUS_FAILED:
                                 Log.i(tag, "Download failed.");
                                 Toast.makeText(ActivityMain.this, "Couldn't download the map. " +
                                                 "Please refresh to try again.",
-                                        Toast.LENGTH_LONG).show();
+                                        Toast.LENGTH_SHORT).show();
                                 break;
                         }
                     }

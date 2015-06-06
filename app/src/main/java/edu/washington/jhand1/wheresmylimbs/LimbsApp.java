@@ -121,7 +121,7 @@ public class LimbsApp extends Application {
         List<Item> roomItems = currentRoom.getItems();
         String update = "";
         if (!roomItems.isEmpty()) {
-            update += "You have found your " + roomItems.get(0);
+            update += "You have found your " + roomItems.get(0) + ".";
             roomItems.remove(0);
             for (int i = 1; i < roomItems.size(); i++) {
                 Item item = roomItems.get(i);
@@ -129,7 +129,7 @@ public class LimbsApp extends Application {
                 update += ", " + item.getName();
             }
         } else {
-            update = "This room is empty";
+            update = "This room is empty.";
         }
         return update;
     }

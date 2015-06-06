@@ -56,8 +56,8 @@ public class ActivityGame extends Activity {
         limbsApp.setDifficulty(Integer.parseInt(preferences.getString("difficulty", null)));
         items = limbsApp.getItems();
 
-        music = preferences.getBoolean("music", false);
-        sfx = preferences.getBoolean("sfx", false);
+        music = !preferences.getBoolean("music", false);
+        sfx = !preferences.getBoolean("sfx", false);
 
         if (music) {
             mpTrack = MediaPlayer.create(getApplicationContext(), R.raw.bittrack);

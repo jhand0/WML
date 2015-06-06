@@ -6,11 +6,13 @@
     <string name="pref_title_adventure">Adventure</string>
     <string-array name="pref_adventure_titles">
         <item>Tutorial</item>
-        <item>Where\'s My Limbs</item>
+        <item>Where\'s my Limbs</item>
+        <item>Where\'s My Limbs Castle Edition</item>
     </string-array>
     <string-array name="pref_adventure_values">
         <item>tutorial</item>
         <item>http://students.washington.edu/jhand1/adventure.json</item>
+        <item>http://students.washington.edu/artemvm/castle.json</item>
     </string-array>
 
     <string name="pref_title_difficulty">Difficulty</string>
