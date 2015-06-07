@@ -92,10 +92,12 @@ public class ActivityMain extends Activity {
         }
     }
     @Override
-    protected void onStop() {
+    protected void onPause() {
         super.onStop();
-        if (receiver.isOrderedBroadcast()) {
+        try {
             unregisterReceiver(receiver);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
         }
     }
 
