@@ -35,7 +35,13 @@ public class FragmentRoom extends Fragment {
         View view = inflater.inflate(R.layout.fragment_room, container, false);
         ((TextView) view.findViewById(R.id.txtRoomTitle)).setText(roomTitle);
         ((TextView) view.findViewById(R.id.txtRoomDescription)).setText(roomDescription);
-        ((TextView) view.findViewById(R.id.txtRoomUpdate)).setText(roomUpdate);
+        if (roomUpdate != null) {
+            view.findViewById(R.id.txtRoomUpdate).setVisibility(View.VISIBLE);
+            ((TextView) view.findViewById(R.id.txtRoomUpdate)).setText(roomUpdate);
+        } else {
+            view.findViewById(R.id.txtRoomUpdate).setVisibility(View.GONE);
+        }
+
         return view;
     }
 

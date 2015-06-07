@@ -63,6 +63,7 @@ public class ActivityMain extends Activity {
             public void onClick(View v) {
                 limbsApp.createRepo();
                 btnPlay.setText(limbsApp.getAdventureTitle());
+                broadcastReceiver();
             }
         });
 
@@ -72,7 +73,21 @@ public class ActivityMain extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
+        limbsApp.createRepo();
+        broadcastReceiver();
+    }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        try {
+            unregisterReceiver(receiver);
+        } catch (IllegalArgumentException e) {
+            // Do nothing
+        }
+    }
+
+    private void broadcastReceiver() {
         // Make sure url is set
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         String adventure = preferences.getString("adventure", null);
@@ -89,15 +104,6 @@ public class ActivityMain extends Activity {
             Log.i(tag, "Starting download service...");
             Intent downloadMap = new Intent(getBaseContext(), DownloadService.class);
             startService(downloadMap);
-        }
-    }
-    @Override
-    protected void onPause() {
-        super.onStop();
-        try {
-            unregisterReceiver(receiver);
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
         }
     }
 
@@ -152,17 +158,17 @@ public class ActivityMain extends Activity {
                                     e.printStackTrace();
                                 } catch (Exception e) {
                                     Log.i(tag, "Map parsing failed.");
-                                    Toast.makeText(ActivityMain.this, "We forgot where we" +
+                                    Toast.makeText(ActivityMain.this, "We forgot where we " +
                                                     "put your limbs. Please choose a different" +
                                                     "map.",
-                                            Toast.LENGTH_LONG).show();
+                                            Toast.LENGTH_SHORT).show();
                                 }
                                 break;
                             case DownloadManager.STATUS_FAILED:
                                 Log.i(tag, "Download failed.");
                                 Toast.makeText(ActivityMain.this, "Couldn't download the map. " +
                                                 "Please refresh to try again.",
-                                        Toast.LENGTH_LONG).show();
+                                        Toast.LENGTH_SHORT).show();
                                 break;
                         }
                     }

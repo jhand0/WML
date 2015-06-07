@@ -119,19 +119,17 @@ public class LimbsApp extends Application {
 
     public String getRoomUpdate() {
         List<Item> roomItems = currentRoom.getItems();
-        String update = "";
         if (!roomItems.isEmpty()) {
-            update += "You have found " + roomItems.get(0);
+            String update = "You have found your " + roomItems.get(0).getName().toLowerCase();
             roomItems.remove(0);
             for (int i = 1; i < roomItems.size(); i++) {
                 Item item = roomItems.get(i);
                 roomItems.remove(i);
-                update += ", " + item.getName();
+                update += ", " + item.getName().toLowerCase();
             }
-        } else {
-            update = "This room is empty";
+            return update;
         }
-        return update;
+        return null;
     }
 
     public boolean allItemsCollected() {

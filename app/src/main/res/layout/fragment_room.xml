@@ -55,7 +55,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Room event event event event event event event event event event event event event event event"
             android:id="@+id/txtRoomUpdate"
-            android:textColor="#ffd5d5d5"
+            android:textColor="#ff00ff00"
             android:gravity="center_horizontal"
             android:padding="5dp"
             android:typeface="serif"
