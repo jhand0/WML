@@ -1,7 +1,7 @@
 {
   "title": "Tutorial",
-  "description": "Welcome to Where's My Limbs! To win, navigate all the rooms in the castle to regain your missing limbs. If you can't find them in the alloted number of moves you'll bleed out and die. Please don't die. It's messy business and our janitor bled out last week.",
-  "victory_message": "You've completed the WML tutorial! Go to settings to check out our other maps! Unless you have something better to do while you're on the can.",
+  "description": "Find your limbs. If you can't find them in the alloted number of moves you'll bleed out and die. Pretty easy concept huh? Please don't die. It's messy business.",
+  "victory_message": "Go to settings to check out our other maps!",
   "death_message": "You clearly have a listening problem",
   "startx": 0,
   "starty": 0,
@@ -79,7 +79,7 @@
 	  "xcoordinate": 1,
 	  "ycoordinate": 2,
 	  "room_title": "Tutorial Part 4",
-	  "room_description": "Alright onto the next leg of your journey! Get it?? Leg?? cause... that's your leg... over there in the corner... covered in blood... oh you're no fun. Take a right into the next room pouty-pants.",
+	  "room_description": "On to the next leg of your journey! Get it?? Leg?? cause... that's your leg... over there in the corner... oh you're no fun. Take a right into the next room pouty-pants.",
 	  "room_item": [
 		{
 	  		"title": "Left Leg",
