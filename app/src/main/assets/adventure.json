@@ -8,9 +8,9 @@
   "xsize": 4,
   "ysize": 4,
   "turns": [
-	5,
-	4,
-	4
+	8,
+	7,
+	6
   ],
   "objectives": [
 	{
@@ -39,8 +39,7 @@
 	  "room_item": [
 	  ],
 	  "available_directions": [
-		"north",
-		"south"
+		"north"
 	  ]
 	},
 	{
