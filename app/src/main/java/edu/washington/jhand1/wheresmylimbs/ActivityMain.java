@@ -41,7 +41,7 @@ public class ActivityMain extends Activity {
         Button btnSettings = (Button) findViewById(R.id.btnSettings);
         Button btnRefresh = (Button) findViewById(R.id.btnRefresh);
 
-        btnPlay.setText(limbsApp.getAdventureTitle());
+        btnPlay.setText("Play " + limbsApp.getAdventureTitle());
         btnPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,7 +62,7 @@ public class ActivityMain extends Activity {
             @Override
             public void onClick(View v) {
                 limbsApp.createRepo();
-                btnPlay.setText(limbsApp.getAdventureTitle());
+                btnPlay.setText("Play " + limbsApp.getAdventureTitle());
                 broadcastReceiver();
             }
         });
