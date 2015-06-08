@@ -127,7 +127,7 @@ public class LimbsApp extends Application {
                 roomItems.remove(i);
                 update += ", " + item.getName().toLowerCase();
             }
-            return update;
+            return update + "!";
         }
         return null;
     }
