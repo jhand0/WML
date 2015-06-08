@@ -157,11 +157,11 @@ public class ActivityGame extends Activity {
     public void onDestroy() {
         super.onDestroy();
         if (music) {
-            mpTrack.stop();
+            mpTrack.reset();
             mpTrack.release();
         }
         if (sfx) {
-            mpBite.stop();
+            mpBite.reset();
             mpBite.release();
         }
         limbsApp.createRepo();
@@ -169,7 +169,7 @@ public class ActivityGame extends Activity {
 
     private void update() {
         if (sfx) {
-            mpBite.stop();
+            mpBite.reset();
             mpBite.release();
             mpBite = MediaPlayer.create(getApplicationContext(), R.raw.mylimbs);
             mpBite.start();
