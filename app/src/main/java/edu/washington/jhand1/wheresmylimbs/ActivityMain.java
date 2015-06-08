@@ -74,6 +74,7 @@ public class ActivityMain extends Activity {
     protected void onResume() {
         super.onResume();
         limbsApp.createRepo();
+        btnPlay.setText("Play " + limbsApp.getAdventureTitle());
         broadcastReceiver();
     }
 
