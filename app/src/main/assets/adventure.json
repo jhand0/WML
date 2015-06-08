@@ -2,11 +2,11 @@
   "title": "Tutorial",
   "description": "Find your limbs. If you can't find them in the allotted number of moves you'll bleed out and die. Pretty easy concept huh? Please don't die. It's messy business.",
   "victory_message": "Go to settings to check out our other maps!",
-  "death_message": "You clearly have a listening problem.",
+  "death_message": "It's ok lots of people die the first time. Wanna try again?",
   "startx": 0,
   "starty": 0,
-  "xsize": 3,
-  "ysize": 3,
+  "xsize": 4,
+  "ysize": 4,
   "turns": [
 	5,
 	4,
@@ -95,16 +95,54 @@
 	  "xcoordinate": 2,
 	  "ycoordinate": 2,
 	  "room_title": "Tutorial Room 5",
-	  "room_description": "Hey you did it! So you aren't totally incompetent. Coolio.",
+	  "room_description": "No body parts in here :'( Why don't you go up and check there? I think i saw an arm or something.",
 	  "room_item": [
-		{
-	  		"title": "Left Arm",
-	  		"ascii": "*--"
+	  ],
+	  "available_directions": [
+		"north",
+		"west",
+		"east"
+	  ]
+	},
+	{
+	  "xcoordinate": 2,
+	  "ycoordinate": 3,
+	  "room_title": "Tutorial Room 6",
+	  "room_description": "The door locked behind you! Sorry I misled you. I couldn't help myself. Ok, no going back now. Press on.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"east"
+	  ]
+	},
+	{
+	  "xcoordinate": 3,
+	  "ycoordinate": 3,
+	  "room_title": "Tutorial Room 7",
+	  "room_description": "Sweet you found another way around. Head on down!",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"west",
+		"south"
+	  ]
+	},
+	{
+	  "xcoordinate": 3,
+	  "ycoordinate": 2,
+	  "room_title": "Tutorial Room 8",
+	  "room_description": "YES! I did it! Tutorial guy #1! I mean you... you did it",
+	  "room_item": [
+	  	{
+			"title": "Left Arm",
+			"ascii": "*--"
 		}
 	  ],
 	  "available_directions": [
+		"north",
 		"west"
 	  ]
 	}
+
   ]
 }
