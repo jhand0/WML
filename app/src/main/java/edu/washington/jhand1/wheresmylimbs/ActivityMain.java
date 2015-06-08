@@ -39,9 +39,8 @@ public class ActivityMain extends Activity {
 
         btnPlay = (Button) findViewById(R.id.btnPlay);
         Button btnSettings = (Button) findViewById(R.id.btnSettings);
-        Button btnRefresh = (Button) findViewById(R.id.btnRefresh);
 
-        btnPlay.setText("Play " + limbsApp.getAdventureTitle());
+        btnPlay.setText(limbsApp.getAdventureTitle());
         btnPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,15 +57,6 @@ public class ActivityMain extends Activity {
             }
         });
 
-        btnRefresh.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                limbsApp.createRepo();
-                btnPlay.setText("Play " + limbsApp.getAdventureTitle());
-                broadcastReceiver();
-            }
-        });
-
         dm = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
     }
 
@@ -74,7 +64,7 @@ public class ActivityMain extends Activity {
     protected void onResume() {
         super.onResume();
         limbsApp.createRepo();
-        btnPlay.setText("Play " + limbsApp.getAdventureTitle());
+        btnPlay.setText(limbsApp.getAdventureTitle());
         broadcastReceiver();
     }
 
@@ -154,6 +144,7 @@ public class ActivityMain extends Activity {
                                         // Write json string to file
                                         limbsApp.writeToFile(json);
                                     }
+                                    btnPlay.setText(limbsApp.getAdventureTitle());
                                     Log.i(tag, "Download finished.");
                                 } catch (IOException e) {
                                     e.printStackTrace();

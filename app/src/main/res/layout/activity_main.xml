@@ -38,10 +38,10 @@
         android:textColor="#ffd5d5d5"
         android:textSize="20dp"
         android:width="180dp"
-        android:layout_above="@+id/btnRefresh"
-        android:layout_alignLeft="@+id/btnRefresh"
-        android:layout_alignStart="@+id/btnRefresh"
-        android:layout_marginBottom="20dp" />
+        android:layout_marginBottom="20dp"
+        android:layout_above="@+id/btnSettings"
+        android:layout_alignLeft="@+id/btnSettings"
+        android:layout_alignStart="@+id/btnSettings" />
 
     <Button
         style="@android:style/MediaButton.Play"
@@ -58,19 +58,4 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp" />
 
-    <Button
-        style="@android:style/MediaButton.Play"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="REFRESH MAP"
-        android:id="@+id/btnRefresh"
-        android:background="#ff636275"
-        android:typeface="serif"
-        android:textColor="#ffd5d5d5"
-        android:textSize="20dp"
-        android:width="180dp"
-        android:layout_above="@+id/btnSettings"
-        android:layout_alignLeft="@+id/btnSettings"
-        android:layout_alignStart="@+id/btnSettings"
-        android:layout_marginBottom="20dp" />
 </RelativeLayout>
