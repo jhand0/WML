@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class LimbsApp extends Application {
 
-    public static final String FILENAME = "adventure.json";
+    public static final String FILENAME = "tutorial.json";
 
     private static LimbsApp instance = null;
     private MapRepository mapRepo;
