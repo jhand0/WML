@@ -1,0 +1,460 @@
+{
+  "title": "Fight The Dragon",
+  "description": "Find your missing armor and weapons to fight the dragon!",
+  "victory_message": "With the help of your sword and armor, you are able to defeat the dragon!",
+  "death_message": "The dragon attacks! Without all your equipment you are no match for the dragon. How unfortunate.",
+  "startx": 0,
+  "starty": 1,
+  "xsize": 6,
+  "ysize": 6,
+  "turns": [
+	70,
+	55,
+	40
+  ],
+  "objectives": [
+	{
+	  "title": "Sword",
+	  "ascii": "\\--"
+	},
+	{
+	  "title": "Shield",
+	  "ascii": "--)"
+	},
+	{
+	  "title": "Left Boot",
+	  "ascii": "_/"
+	},
+	{
+	  "title": "Right Boot",
+	  "ascii": "\\_"
+	}
+  ],
+  "rooms": [
+
+
+  	{
+	  "xcoordinate": 0,
+	  "ycoordinate": 0,
+	  "room_title": "Dark Alley",
+	  "room_description": "You investigate the dark alley, but there's nothing else here.",
+	  "room_item": [
+		{
+	  		"title": "Right Boot",
+	  		"ascii": "\\_"
+		}
+	  ],
+	  "available_directions": [
+		"east"
+	  ]
+	},
+	{
+	  "xcoordinate": 0,
+	  "ycoordinate": 1,
+	  "room_title": "Tavern",
+	  "room_description": "You find yourself in the village tavern. One drink turns to three, and three to too many. Some rowdy patrons encourage you to try and jump over the hay bales behind the bar, to the North.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"north"
+	  ]
+	},
+	{
+	  "xcoordinate": 0,
+	  "ycoordinate": 2,
+	  "room_title": "Hay Bales",
+	  "room_description": "You jump over the hay bales, but discover too late a dark hole behind them! You slide down the side of the hole, trying uselessly to scramble back.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"north"
+	  ]
+	},
+	{
+	  "xcoordinate": 0,
+	  "ycoordinate": 3,
+	  "room_title": "Falling",
+	  "room_description": "You try to stop your slide but you keep sliding faster and faster...",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"north"
+	  ]
+	},
+	{
+	  "xcoordinate": 0,
+	  "ycoordinate": 4,
+	  "room_title": "Dark Cave",
+	  "room_description": "You find yourself in a dark cave. This cave has stalactites. Feeling around in the dark, you think you can feel passages to the North and East.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"north",
+		"east"
+	  ]
+	},
+	{
+	  "xcoordinate": 0,
+	  "ycoordinate": 5,
+	  "room_title": "Wall",
+	  "room_description": "You bump into a wall. Guess there's no passage this way after all, might as well turn back.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"south"
+	  ]
+	},
+	{
+	  "xcoordinate": 1,
+	  "ycoordinate": 0,
+	  "room_title": "Houses",
+	  "room_description": "You're in the village housing district. To the West lies a dark alley, and to the North the Village Gym.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"north",
+		"west"
+	  ]
+	},
+	{
+	  "xcoordinate": 1,
+	  "ycoordinate": 1,
+	  "room_title": "Village Gym",
+	  "room_description": "You're in the village gym. To the West lies the tavern, and the village square is to the East. The housing district is South, and the outskirts are North.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+	  	"north",
+		"east",
+		"south",
+		"west"
+	  ]
+	},
+	{
+	  "xcoordinate": 1,
+	  "ycoordinate": 2,
+	  "room_title": "Village Outskirts",
+	  "room_description": "You find yourself in the village outskirts. You see some familiar hay bales to the West, the Village Gym to the South, and some grasslands to the East.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"east",
+		"south",
+		"west"
+	  ]
+	},
+	{
+	  "xcoordinate": 1,
+	  "ycoordinate": 3,
+	  "room_title": "Wall",
+	  "room_description": "You bump into a wall. Guess there's no passage this way after all, might as well turn back.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+	  	"north"
+	  ]
+	},
+	{
+	  "xcoordinate": 1,
+	  "ycoordinate": 4,
+	  "room_title": "Dark Cave",
+	  "room_description": "You find yourself in a dark cave. You feel a wall on the North side, but the other directions seem clear.",
+	  "room_item": [],
+	  "available_directions": [
+		"east",
+		"south",
+		"west"]
+	},
+	{
+	  "xcoordinate": 1,
+	  "ycoordinate": 5,
+	  "room_title": "Wall",
+	  "room_description": "You bump into a wall. Guess there's no passage this way after all, might as well turn back.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"east"
+	  ]
+	},
+	{
+	  "xcoordinate": 2,
+	  "ycoordinate": 1,
+	  "room_title": "Village Square",
+	  "room_description": "You're in the village square. To the North lies some grasslands, the village gym is to the West, and the Market lies to your East.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+	  	"north",
+		"east",
+		"west"
+	  ]
+	},
+	{
+	  "xcoordinate": 2,
+	  "ycoordinate": 2,
+	  "room_title": "Grasslands",
+	  "room_description": "You find yourself in some grasslands. To the North: the cave entrance; to the East: a logging camp; to the South: the village square; to the West: village outskirts.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"north",
+		"east",
+		"south",
+		"west"
+	  ]
+	},
+	{
+	  "xcoordinate": 2,
+	  "ycoordinate": 3,
+	  "room_title": "Cave Entrance",
+	  "room_description": "You find the cave entrance. The cave extends to the North, with grasslands to the South.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+	  	"north",
+	  	"south"
+	  ]
+	},
+	{
+	  "xcoordinate": 2,
+	  "ycoordinate": 4,
+	  "room_title": "Dark Cave",
+	  "room_description": "You find yourself in a dark cave. You can see light to the south! Only darkness in the other directions.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+	  	"north",
+		"east",
+		"south",
+		"west"
+	  ]
+	},
+	{
+	  "xcoordinate": 2,
+	  "ycoordinate": 5,
+	  "room_title": "Dark Cave",
+	  "room_description": "You're in some more dark cave. You can feel a wall to the North, but the other directions seem clear.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"south",
+		"east",
+		"west"
+	  ]
+	},
+	{
+	  "xcoordinate": 3,
+	  "ycoordinate": 0,
+	  "room_title": "Black Market",
+	  "room_description": "You're in the bad part of town: the village black market. To the East lies a spooky alley, and to the North lies the regular market.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"north",
+		"east"
+	  ]
+	},
+	{
+	  "xcoordinate": 3,
+	  "ycoordinate": 1,
+	  "room_title": "Village Market",
+	  "room_description": "You're in the village market. To the East lies a mysterious, yet locked, mansion. The Village Square is West, and the black market is South.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"south",
+		"west"
+	  ]
+	},
+	{
+	  "xcoordinate": 3,
+	  "ycoordinate": 2,
+	  "room_title": "Logging Camp",
+	  "room_description": "You're in some kind of logging camp; the camp mill is to the East, and grasslands lie to the West.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"east",
+		"west"
+	  ]
+	},
+	{
+	  "xcoordinate": 3,
+	  "ycoordinate": 4,
+	  "room_title": "Wall",
+	  "room_description": "You bump into a wall. Guess there's no passage this way after all, might as well turn back.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"west"
+	  ]
+	},
+	{
+	  "xcoordinate": 3,
+	  "ycoordinate": 5,
+	  "room_title": "Dark Cave",
+	  "room_description": "You're in some more dark cave. You can feel passages to the East and West.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"east",
+		"west"
+	  ]
+	},
+	{
+	  "xcoordinate": 4,
+	  "ycoordinate": 0,
+	  "room_title": "Spooky Alley",
+	  "room_description": "You're in the spooky alley, which runs East and Westward. You can see the locked mansion to the North, but can't see a way in from here.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+	  	"east",
+		"west"
+	  ]
+	},
+	{
+	  "xcoordinate": 4,
+	  "ycoordinate": 1,
+	  "room_title": "Mysterious Mansion",
+	  "room_description": "In the mansion, you spot a suspicious, humongous knife in the kitchen... You can escape the mansion through a window to the East overlooking the Market.",
+	  "room_item": [
+	  	{
+	  		"title": "Sword",
+	  		"ascii":"\\--"
+	  	}
+	  ],
+	  "available_directions": [
+		"west"
+	  ]
+	},
+	{
+	  "xcoordinate": 4,
+	  "ycoordinate": 2,
+	  "room_title": "Logging Camp Mill",
+	  "room_description": "You're at the logging camp mill. forest extends to the North and East, with the logging camp base to the West.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+	  	"north",
+		"east",
+		"west"
+	  ]
+	},
+	{
+	  "xcoordinate": 4,
+	  "ycoordinate": 3,
+	  "room_title": "Forest",
+	  "room_description": "You're in some dense forest. You see a strange structure to the East, and the logging mill to the South.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"east",
+		"south"
+	  ]
+	},
+	{
+	  "xcoordinate": 4,
+	  "ycoordinate": 4,
+	  "room_title": "Dark Cave",
+	  "room_description": "You're in some more dark cave. You can feel passages to the North and West.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"north",
+		"east"
+	  ]
+	},
+	{
+	  "xcoordinate": 4,
+	  "ycoordinate": 5,
+	  "room_title": "Dark Cave",
+	  "room_description": "You're in some more dark cave. You can feel a wall to the North, but the other directions seem clear.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"east",
+		"south",
+		"west"
+	  ]
+	},
+	{
+	  "xcoordinate": 5,
+	  "ycoordinate": 0,
+	  "room_title": "Statue",
+	  "room_description": "You find yourself at the base of an old statue of a man on a horse. You might be able to climb up the statue, otherwise you can return down the alley to the West.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"north",
+		"west"
+	  ]
+	},
+	{
+	  "xcoordinate": 5,
+	  "ycoordinate": 1,
+	  "room_title": "Top of the Statue",
+	  "room_description": "You precariously make your way to the top of the statue, and think you might be able to jump into one of the mysterious house's windows to the West. Otherwise you can climb down.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"south",
+		"west"
+	  ]
+	},
+	{
+	  "xcoordinate": 5,
+	  "ycoordinate": 2,
+	  "room_title": "Forest",
+	  "room_description": "You're in some dense forest. You see a strange structure to the North, and the logging mill to the West.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"north",
+		"west"
+	  ]
+	},
+	{
+	  "xcoordinate": 5,
+	  "ycoordinate": 3,
+	  "room_title": "Hermit's Shack",
+	  "room_description": "The structure turns out to be a hermit's shack. Inside you notice something strange above the fireplace...",
+	  "room_item": [
+	  	{
+	  		"title":"Shield",
+	  		"ascii":"--)"
+	  	}
+	  ],
+	  "available_directions": [
+	  	"south",
+		"west"
+	  ]
+	},
+	{
+	  "xcoordinate": 5,
+	  "ycoordinate": 4,
+	  "room_title": "Wall",
+	  "room_description": "You bump into a wall. Guess there's no passage this way after all, might as well turn back.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+	  	"west"
+	  ]
+	},
+	{
+	  "xcoordinate": 5,
+	  "ycoordinate": 5,
+	  "room_title": "Dark Cave",
+	  "room_description": "You feel along in the cave untill you stumble over something on the ground.",
+	  "room_item": [
+	  	{
+	  		"title": "Left Boot",
+	  		"ascii": "_/"
+	  	}
+	  ],
+	  "available_directions": [
+		"west"
+	  ]
+	}
+  ]
+}

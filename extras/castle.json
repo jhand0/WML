@@ -1,0 +1,466 @@
+{
+  "title": "Wander The Castle",
+  "description": "You neglected to clean the sleeping chambers, so your master has torn off your limbs and left you to die. Navigate the fortress to recover your missing limbs!",
+  "victory_message": "You survived and learned a valuable lesson. Better get cleaning!",
+  "death_message": "You have bled out. Your master sure taught you a lesson. He taught you good.",
+  "startx": 2,
+  "starty": 1,
+  "xsize": 6,
+  "ysize": 6,
+  "turns": [
+	50,
+	40,
+	30
+  ],
+  "objectives": [
+	{
+	  "title": "Left Arm",
+	  "ascii": "*--"
+	},
+	{
+	  "title": "Right Arm",
+	  "ascii": "--*"
+	},
+	{
+	  "title": "Left Leg",
+	  "ascii": "_/"
+	},
+	{
+	  "title": "Right Leg",
+	  "ascii": "\\_"
+	}
+  ],
+  "rooms": [
+
+
+  	{
+	  "xcoordinate": 0,
+	  "ycoordinate": 0,
+	  "room_title": "Basement",
+	  "room_description": "You're in the basement of some kind of shed. To the North is a stack of boxes you can use to climb out. To the East: a tunnel.",
+	  "room_item": [
+		{
+	  		"title": "Left Leg",
+	  		"ascii": "_/"
+		}
+	  ],
+	  "available_directions": [
+		"north",
+		"east"
+	  ]
+	},
+	{
+	  "xcoordinate": 0,
+	  "ycoordinate": 1,
+	  "room_title": "Shed",
+	  "room_description": "You're in some kind of toolshed. To the north is a ladder to the roof; to the east lies a garden.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"north",
+		"east"
+	  ]
+	},
+	{
+	  "xcoordinate": 0,
+	  "ycoordinate": 2,
+	  "room_title": "Roof",
+	  "room_description": "You're on the shed roof. In front of you lies the castle wall, behind you is the ladder to climb back down. You might be able to jump over the wall from here... ",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"north",
+		"south"
+	  ]
+	},
+	{
+	  "xcoordinate": 0,
+	  "ycoordinate": 3,
+	  "room_title": "Castle Yard",
+	  "room_description": "You're in the castle yard. You see the kitchens to your right, and some heavy forest up ahead of you.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"north",
+		"east"
+	  ]
+	},
+	{
+	  "xcoordinate": 0,
+	  "ycoordinate": 4,
+	  "room_title": "Forest",
+	  "room_description": "You're in a dense forest. To the north and east lie some deep, dark forest. Behind you lies the castle yard.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"north",
+		"east",
+		"south"
+	  ]
+	},
+	{
+	  "xcoordinate": 0,
+	  "ycoordinate": 5,
+	  "room_title": "Deep Forest",
+	  "room_description": "You're in a deep, dark forest. To the East lies an even darker forest. Behind you lies some dense, but better lit, forest.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"east",
+		"south"
+	  ]
+	},
+	{
+	  "xcoordinate": 1,
+	  "ycoordinate": 0,
+	  "room_title": "Dark Chamber",
+	  "room_description": "You're in a dark chamber; you can make out some kind of basement room to the West, and some dark tunnels to the East.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"east",
+		"west"
+	  ]
+	},
+	{
+	  "xcoordinate": 1,
+	  "ycoordinate": 1,
+	  "room_title": "Garden",
+	  "room_description": "You're in the castle garden, outside the castle walls. A toolshed lies to your East, while the castle courtyard lies to the West.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"east",
+		"west"
+	  ]
+	},
+	{
+	  "xcoordinate": 1,
+	  "ycoordinate": 2,
+	  "room_title": "Meat Locker",
+	  "room_description": "You're in the castle meat locker. Meat hangs from hooks in the chilled room. Is that a human arm you see...? The kitchen door is to the North.",
+	  "room_item": [
+	  	{
+	  		"title":"Right Arm",
+	  		"ascii": "--*"
+	  	}
+	  ],
+	  "available_directions": [
+		"north"
+	  ]
+	},
+	{
+	  "xcoordinate": 1,
+	  "ycoordinate": 3,
+	  "room_title": "Kitchen",
+	  "room_description": "You're in the castle kitchens. There is a door to the meat locker to the South, a door outside to the yard to the East, and a door to the Main hall to the West.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"east",
+		"west",
+		"south"
+	  ]
+	},
+	{
+	  "xcoordinate": 1,
+	  "ycoordinate": 4,
+	  "room_title": "Deep Forest",
+	  "room_description": "You're in a deep, dark forest. To the East and north lies even darker forest. To the West lies some better-lit forest.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+	  "north",
+		"east",
+		"west"
+	  ]
+	},
+	{
+	  "xcoordinate": 1,
+	  "ycoordinate": 5,
+	  "room_title": "Dark Forest",
+	  "room_description": "You're in an extremely dark, dense forest area. To the West and South lies somewhat lighter forest, to the West lies some sort of clearing...",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"east",
+		"south",
+		"west"
+	  ]
+	},
+	{
+	  "xcoordinate": 2,
+	  "ycoordinate": 0,
+	  "room_title": "Underground Tunnel",
+	  "room_description": "You're in a completely dark, underground tunnel. Feeling along the walls, you can feel the tunnel continues East and West.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"east",
+		"west"
+	  ]
+	},
+	{
+	  "xcoordinate": 2,
+	  "ycoordinate": 1,
+	  "room_title": "Castle Courtyard",
+	  "room_description": "You're in a castle courtyard: to the North is a looming fortress. The guards don't look like they'll let you through. To the East lies the castle stables; to the West a massive garden.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"east",
+		"west"
+	  ]
+	},
+	{
+	  "xcoordinate": 2,
+	  "ycoordinate": 2,
+	  "room_title": "Castle Entry",
+	  "room_description": "You're in the castle entry. You can leave to the South; the guards aren't stopping anybody leaving. To the North lies the castle main hall.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"south",
+		"north"
+	  ]
+	},
+	{
+	  "xcoordinate": 2,
+	  "ycoordinate": 3,
+	  "room_title": "Main Hall Room",
+	  "room_description": "You're in the castle Hall. To the South lies the castle entrance; to the West, the kitchens, and to the east, the Breezeway.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+	  "east",
+		"south",
+		"west"
+	  ]
+	},
+	{
+	  "xcoordinate": 2,
+	  "ycoordinate": 4,
+	  "room_title": "Dark Forest",
+	  "room_description": "You're in an extrememly dark, dense forest. To the West lies somewhat lighter forest, to the North and East lies some sort of clearing...",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"east",
+		"north",
+		"west"
+	  ]
+	},
+	{
+	  "xcoordinate": 2,
+	  "ycoordinate": 5,
+	  "room_title": "Clearing",
+	  "room_description": "You find yourself in some kind of clearing, with dark forest to the South and West. There is some kind of statue to the East...",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"south",
+		"east",
+		"west"
+	  ]
+	},
+	{
+	  "xcoordinate": 3,
+	  "ycoordinate": 0,
+	  "room_title": "Underground Tunnel",
+	  "room_description": "You're in a completely dark, underground tunnel. Feeling along the walls, you can feel the tunnel continues East and West.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"east",
+		"west"
+	  ]
+	},
+	{
+	  "xcoordinate": 3,
+	  "ycoordinate": 1,
+	  "room_title": "Castle Stables",
+	  "room_description": "You're in the castle stables. To the West lies the castle courtyard. Some empty stalls line the East side of the stables.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"east",
+		"west"
+	  ]
+	},
+	{
+	  "xcoordinate": 3,
+	  "ycoordinate": 3,
+	  "room_title": "Castle Breezeway",
+	  "room_description": "You're in a castle breezeway. To the East lies the door to the Main Hall. To the West, the castle armorer.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"east",
+		"west"
+	  ]
+	},
+	{
+	  "xcoordinate": 3,
+	  "ycoordinate": 4,
+	  "room_title": "Clearing",
+	  "room_description": "You find yourself in some kind of clearing, with dark forest to the West. There is some kind of statue to the North...",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"north",
+		"west"
+	  ]
+	},
+	{
+	  "xcoordinate": 3,
+	  "ycoordinate": 5,
+	  "room_title": "Statue",
+	  "room_description": "You're in front of a stone statue of an old man in armor. The clearing extends to the South and West. Only three of the statue's limbs are made of stone...",
+	  "room_item": [
+	  	{
+	  		"title": "Right Leg",
+	  		"ascii": "\\_"
+	  	}
+	  ],
+	  "available_directions": [
+		"south",
+		"west"
+	  ]
+	},
+	{
+	  "xcoordinate": 4,
+	  "ycoordinate": 0,
+	  "room_title": "Hole",
+	  "room_description": "You're in some kind of hole, which opens up into the stalls above. It's too high to jump to, but a tunnel leads off to the West.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"west"
+	  ]
+	},
+	{
+	  "xcoordinate": 4,
+	  "ycoordinate": 1,
+	  "room_title": "Stalls",
+	  "room_description": "You're in the horse stalls, and notice a hole in the ground of one of the stalls to the South. A door leads to grasslands to the East and the main stable area is to the West.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"west",
+		"south",
+		"east"
+	  ]
+	},
+	{
+	  "xcoordinate": 4,
+	  "ycoordinate": 3,
+	  "room_title": "Armory",
+	  "room_description": "You're in the castle armory. A path leads back to the breezeway to the West, and the armory toolshed is located to the North",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"west",
+		"north"
+	  ]
+	},
+	{
+	  "xcoordinate": 4,
+	  "ycoordinate": 4,
+	  "room_title": "Toolshed",
+	  "room_description": "You're in the armory toolshed. A room with raw ore is to the North, the forge is to the East, and the main armory floor is to the South.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"north",
+		"east",
+		"south"
+	  ]
+	},
+	{
+	  "xcoordinate": 4,
+	  "ycoordinate": 5,
+	  "room_title": "Raw Ore Storage",
+	  "room_description": "You're in the armory ore storage. The toolshed is behind you. There is a dark, dusty corner to the East that you can't see from here.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"east",
+		"south"
+	  ]
+	},
+	{
+	  "xcoordinate": 5,
+	  "ycoordinate": 0,
+	  "room_title": "Grassland",
+	  "room_description": "You're in some grasslands, on the outskirts of the castle. There are more grasslands up North.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"north"
+	  ]
+	},
+	{
+	  "xcoordinate": 5,
+	  "ycoordinate": 1,
+	  "room_title": "Grassland",
+	  "room_description": "You're in some grasslands, on the outskirts of the castle. The stable's stalls are West, a cherry lies North, and more grasslands lie South.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"north",
+		"south",
+		"west"
+	  ]
+	},
+	{
+	  "xcoordinate": 5,
+	  "ycoordinate": 2,
+	  "room_title": "Cherry Tree",
+	  "room_description": "You are at the base of a large cherry tree. To go any further would be to climb up the tree. Grasslands lie to the South.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+		"north",
+		"south"
+	  ]
+	},
+	{
+	  "xcoordinate": 5,
+	  "ycoordinate": 3,
+	  "room_title": "Grassland",
+	  "room_description": "You climb up the cherry tree, and notice you can jump over the castle wall to the armory to the West. Behind you are branches you can use to climb down.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+	  "south",
+		"west"
+	  ]
+	},
+	{
+	  "xcoordinate": 5,
+	  "ycoordinate": 4,
+	  "room_title": "Forge",
+	  "room_description": "You're at the armory forge. The fire burns hot but there's not much else here.",
+	  "room_item": [
+	  ],
+	  "available_directions": [
+	  "west"
+	  ]
+	},
+	{
+	  "xcoordinate": 5,
+	  "ycoordinate": 5,
+	  "room_title": "Dusty Corner",
+	  "room_description": "You investigate the dusty corner, and suddenly you realize why they call it an armory.",
+	  "room_item": [
+	  	{
+	  		"title": "Left Arm",
+	  		"ascii": "*--"
+	  	}
+	  ],
+	  "available_directions": [
+		"west"
+	  ]
+	}
+  ]
+}
